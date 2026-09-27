@@ -51,7 +51,7 @@ These issues affected readability, maintainability, and reliability.
 
 ---
 
-## 🛠 Improvements Planned and Implemented
+## Improvements Planned and Implemented
 
 Based on the review, I improved:
 
