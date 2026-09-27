@@ -1,0 +1,98 @@
+# Enhancement One – Software Engineering
+
+This enhancement focuses on improving the software engineering quality of my original artifact.  
+The goal was to strengthen the structure, readability, maintainability, and reliability of the code while applying industry‑standard engineering practices.
+
+---
+
+## 🧩 Original Artifact
+
+My original artifact was the **Weight Tracker Android application**, specifically the classes responsible for:
+
+- Managing user input  
+- Updating weight entries  
+- Displaying historical data  
+- Handling UI logic and navigation  
+
+The code worked, but it had several issues related to structure, clarity, and separation of concerns.
+
+---
+
+## ⚠️ Problems Identified
+
+During the code review and initial analysis, I found several engineering issues:
+
+- UI logic mixed with data logic  
+- Repeated code blocks  
+- Weak validation for user input  
+- Poor separation between Activity and Helper classes  
+- Inconsistent naming conventions  
+- Lack of comments and documentation  
+- Hard‑to‑follow flow between methods  
+
+These issues made the code harder to maintain and more prone to bugs.
+
+---
+
+## 🛠 Enhancement Goals
+
+To improve the software engineering quality, I focused on:
+
+- Refactoring methods for clarity  
+- Improving naming conventions  
+- Separating UI logic from data logic  
+- Adding comments and documentation  
+- Reducing repeated code  
+- Improving validation and error handling  
+- Organizing helper classes more effectively  
+
+These changes make the code easier to understand, maintain, and extend.
+
+---
+
+## 🔧 Enhancements Implemented
+
+Here are the specific improvements I made:
+
+### ✔ Refactored methods  
+I reorganized long methods into smaller, more readable functions.
+
+### ✔ Improved naming conventions  
+Variables and methods now follow consistent, descriptive naming.
+
+### ✔ Added validation  
+User input is now checked before being processed.
+
+### ✔ Improved separation of concerns  
+Helper classes handle data logic, while Activities handle UI logic.
+
+### ✔ Added comments  
+Key sections of the code now include clear explanations.
+
+### ✔ Removed repeated code  
+Shared logic was moved into reusable helper methods.
+
+---
+
+## 📈 Impact of the Enhancement
+
+These improvements resulted in:
+
+- Cleaner and more readable code  
+- Better maintainability  
+- Reduced risk of bugs  
+- More professional structure  
+- Easier future enhancements  
+- Stronger alignment with software engineering best practices  
+
+This enhancement demonstrates my ability to apply engineering principles to real code and improve its quality significantly.
+
+---
+
+## 📝 Reflection
+
+Enhancing this artifact taught me the importance of structure and clarity in software engineering.  
+By refactoring and reorganizing the code, I improved both functionality and maintainability.  
+This enhancement shows my growth in applying engineering principles and producing professional‑quality code.
+
+---
