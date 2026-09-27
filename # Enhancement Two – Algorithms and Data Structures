@@ -1,0 +1,98 @@
+# Enhancement Two – Algorithms and Data Structures
+
+This enhancement focuses on improving the algorithmic efficiency and data‑handling logic of my original artifact.  
+The goal was to strengthen how the application processes, stores, and displays weight entries using structured data and optimized algorithms.
+
+---
+
+## Original Artifact
+
+The original artifact was the **WeightListActivity** from my Android Weight Tracker application.  
+This part of the app is responsible for:
+
+- Loading weight entries  
+- Displaying them in a dynamic list  
+- Updating and inserting new entries  
+- Handling user input  
+- Managing structured data  
+
+Because it uses loops, conditions, and lists, it is ideal for demonstrating algorithms and data structures.
+
+---
+
+## Problems Identified
+
+During the code review, I found several algorithmic and data‑structure issues:
+
+- Inefficient loops that processed more data than necessary  
+- Repeated logic inside loops  
+- Weak validation before inserting or updating data  
+- UI logic mixed with data logic  
+- Lack of clear separation between list processing and display  
+- No checks for empty or invalid data  
+- Hard‑to‑follow flow when loading the weight list  
+
+These issues affected performance, clarity, and reliability.
+
+---
+
+## Enhancement Goals
+
+To improve the algorithmic quality of the artifact, I focused on:
+
+- Optimizing loops  
+- Improving conditional logic  
+- Strengthening validation  
+- Separating data processing from UI rendering  
+- Using structured data more effectively  
+- Reducing repeated logic  
+- Improving the flow of list loading and updating  
+
+These changes make the artifact more efficient and easier to maintain.
+
+---
+
+## Enhancements Implemented
+
+### ✔ Improved list‑loading algorithm  
+I reorganized the loop that loads weight entries to avoid repeated work and unnecessary checks.
+
+### ✔ Added validation before processing data  
+The app now checks for empty or invalid values before inserting or updating entries.
+
+### ✔ Separated data logic from UI logic  
+The Activity now focuses on UI, while helper classes handle data processing.
+
+### ✔ Reduced repeated code  
+Shared logic was moved into reusable helper methods.
+
+### ✔ Improved conditional flow  
+Conditions were reorganized to be clearer and more efficient.
+
+### ✔ Strengthened structured data handling  
+Weight entries are now processed in a more predictable and reliable order.
+
+---
+
+## Impact of the Enhancement
+
+These improvements resulted in:
+
+- Faster and cleaner list processing  
+- More reliable updates and inserts  
+- Better separation of responsibilities  
+- Reduced risk of errors  
+- More professional algorithmic structure  
+- Easier future enhancements  
+
+This enhancement demonstrates my ability to analyze and improve algorithms and data structures in a real application.
+
+---
+
+## Reflection
+
+Enhancing this artifact helped me understand how important efficient algorithms and structured data are in application development.  
+By improving loops, conditions, and data flow, I made the app more reliable and easier to maintain.  
+This enhancement shows my growth in algorithmic thinking and my ability to apply data‑structure principles to real code.
+
+---
