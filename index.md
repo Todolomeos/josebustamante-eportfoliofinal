@@ -1,36 +1,16 @@
-# Jose Bustamante – Computer Science ePortfolio
+# Jose Bustamante — Computer Science ePortfolio
 
-Welcome to my CS-499 ePortfolio.  
-This site showcases the work I completed for the Computer Science Capstone, including my code review and enhanced artifacts.
+This CS-499 portfolio presents my Weight Tracker Android artifact and its enhancements in software design and engineering, algorithms and data structures, and databases.
 
----
+## Portfolio contents
 
-## Code Review
-My formal code review video and written reflection.
+- [Code Review and written reflection](code-review.md)
+- [Enhancement One — Software Design and Engineering](enhancement-one.md)
+- [Enhancement Two — Algorithms and Data Structures](enhancement-two.md)
+- [Enhancement Three — Databases](enhancement-three.md)
+- [Weight Tracker source and validation notes](https://github.com/Todolomeos/Weight-Tracking-/blob/e2fe0379d679287ae36a1100b8172018793bd507/CAPSTONE.md)
+- [Proposed artifact changes](https://github.com/Todolomeos/Weight-Tracking-/pull/1)
 
- [View my Code Review](code-review.md)
+## Completion status
 
----
-
-## Enhancement One – Software Engineering
-Refactoring and improving the structure, clarity, and maintainability of my Weight Tracker application.
-
- [View Enhancement One](enhancement-one.md)
-
----
-
-## Enhancement Two – Algorithms and Data Structures
-Improving loops, conditions, validation, and structured data handling in WeightListActivity.
-
- [View Enhancement Two](enhancement-two.md)
-
----
-
-## Coming Soon
-These sections will be added once completed:
-
-- Enhancement Three – Security  
-- Professional Self‑Assessment  
-- Final Reflection  
-
----
+The artifact source and corrections are available in a draft pull request. Android compilation and emulator testing remain pending. The Code Review video still needs a public viewing link, and the Professional Self-Assessment must be added before this portfolio is submitted as complete.
