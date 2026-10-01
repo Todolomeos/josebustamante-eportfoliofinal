@@ -2,6 +2,10 @@
 
 This CS-499 portfolio presents my Weight Tracker Android artifact and its enhancements in software design and engineering, algorithms and data structures, and databases.
 
+## Professional Self-Assessment
+
+[Read my cumulative Professional Self-Assessment](professional-self-assessment.md), covering progress from the start of CS-499 through week five and plans for the remaining weeks.
+
 ## Portfolio contents
 
 - [Code Review and written reflection](code-review.md)
@@ -13,4 +17,4 @@ This CS-499 portfolio presents my Weight Tracker Android artifact and its enhanc
 
 ## Completion status
 
-The artifact source and corrections are available in a draft pull request. Android compilation and emulator testing remain pending. The Code Review video still needs a public viewing link, and the Professional Self-Assessment must be added before this portfolio is submitted as complete.
+The artifact source and corrections are available in a draft pull request. Android compilation and emulator testing remain pending. Both parts of the Code Review still need public viewing links. The Professional Self-Assessment is a cumulative draft through week five and will be updated during the remaining weeks before final submission.
