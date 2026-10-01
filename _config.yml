@@ -1,0 +1,9 @@
+title: Jose Bustamante
+baseurl: /josebustamante-eportfoliofinal
+url: https://todolomeos.github.io
+markdown: kramdown
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default

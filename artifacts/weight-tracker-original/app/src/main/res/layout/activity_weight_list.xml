@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="#FFFFFF">
+
+    <!-- TITLE -->
+    <TextView
+        android:id="@+id/titleWeightList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daily Weight Entries"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp" />
+
+    <!-- GRID (TABLELAYOUT) -->
+    <TableLayout
+        android:id="@+id/weightTable"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:stretchColumns="0,1,2"
+        app:layout_constraintTop_toBottomOf="@id/titleWeightList"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonAddWeight"
+        android:layout_marginTop="20dp">
+
+        <!-- HEADER ROW -->
+        <TableRow>
+            <TextView
+                android:text="Date"
+                android:textStyle="bold"
+                android:padding="8dp" />
+
+            <TextView
+                android:text="Weight"
+                android:textStyle="bold"
+                android:padding="8dp" />
+
+            <TextView
+                android:text="Delete"
+                android:textStyle="bold"
+                android:padding="8dp" />
+        </TableRow>
+
+        <!-- DATA ROWS WILL BE ADDED IN PROJECT 3 -->
+
+    </TableLayout>
+
+    <!-- BUTTON: ADD WEIGHT -->
+    <Button
+        android:id="@+id/buttonAddWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Add Weight"
+        android:backgroundTint="#6200EE"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonAddGoal"
+        android:layout_marginBottom="20dp" />
+
+    <!-- BUTTON: ADD GOAL WEIGHT -->
+    <Button
+        android:id="@+id/buttonAddGoal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Add Goal Weight"
+        android:backgroundTint="#03A9F4"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonLogout"
+        android:layout_marginBottom="20dp" />
+
+    <!-- BUTTON: LOGOUT -->
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:backgroundTint="#E53935"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

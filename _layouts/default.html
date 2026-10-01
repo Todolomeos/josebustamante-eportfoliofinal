@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ page.title | default: site.title }}</title>
+<style>
+:root{color-scheme:light;--ink:#172c3e;--accent:#145c66;--muted:#526477}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);background:#f4f7f9;font:17px/1.7 system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:#fff;border-bottom:1px solid #d6e0e7}nav{max-width:1080px;margin:auto;padding:20px 28px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}nav .brand{font-weight:750;margin-right:auto}
+a{color:var(--accent);text-underline-offset:4px}nav a{text-decoration:none}nav a:hover,nav a:focus-visible{text-decoration:underline}
+main{max-width:1000px;margin:36px auto;padding:36px 44px;background:#fff;border:1px solid #dce5eb;border-radius:12px}
+h1{font-size:2.25rem;line-height:1.2;margin:0 0 24px}h2{font-size:1.4rem;margin-top:32px}h3{font-size:1.15rem}p,li{max-width:80ch}li{margin:9px 0}
+table{border-collapse:collapse;width:100%;font-size:.94rem;display:block;overflow:auto}th,td{text-align:left;vertical-align:top;padding:13px;border:1px solid #d6e0e7}th{background:#edf4f5}
+iframe{display:block;width:100%;aspect-ratio:16/9;border:1px solid #d6e0e7;border-radius:8px}footer{max-width:1000px;margin:20px auto 40px;padding:0 28px;color:var(--muted);font-size:.9rem}
+pre{overflow:auto;background:#f0f4f7;padding:18px}a:focus-visible{outline:3px solid #dfac30;outline-offset:4px}
+@media(max-width:640px){main{margin:16px 12px;padding:24px 20px}nav{padding:16px 20px;gap:12px}nav .brand{width:100%}h1{font-size:1.8rem}}
+</style>
+</head>
+<body>
+<header><nav aria-label="Main navigation">
+<a class="brand" href="{{ '/' | relative_url }}">Jose Bustamante</a>
+<a href="{{ '/professional-self-assessment.html' | relative_url }}">Self-Assessment</a>
+<a href="{{ '/code-review.html' | relative_url }}">Code Review</a>
+<a href="{{ '/artifact.html' | relative_url }}">Artifact</a>
+<a href="{{ '/course-outcomes.html' | relative_url }}">Course Outcomes</a>
+</nav></header>
+<main>{{ content }}</main>
+<footer>Computer Science ePortfolio · Cybersecurity &amp; Data Analysis</footer>
+</body></html>

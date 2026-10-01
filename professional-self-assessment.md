@@ -32,7 +32,7 @@ My interest in cybersecurity also leads me to look for weaknesses instead of ass
 
 The original code, two-part code review, enhanced source, and three enhancement narratives show the relationship between identifying a problem, proposing a change, and explaining the resulting behavior. Software design supports maintainability, algorithmic review supports more deliberate processing, and database improvements support integrity and ownership. Together, these areas provide a foundation for the cybersecurity and data analysis work I want to pursue.
 
-At this stage, SQL migration checks have passed for three historical schema layouts. Android compilation and emulator testing remain pending. The proposed changes are available for review in GitHub; they should not be described as a completed, fully tested release.
+At this stage, SQL migration checks have passed for three historical schema layouts. Android compilation and emulator testing remain pending. The enhanced source is available in GitHub; it should not be described as a completed, fully tested release.
 
 ## Remaining weeks: six through eight
 
