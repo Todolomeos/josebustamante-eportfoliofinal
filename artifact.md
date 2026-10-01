@@ -14,7 +14,7 @@ The archived Original_Code folder from the Milestone Four submission preserves t
 
 ## Enhanced work
 
-- [Browse the enhanced source](https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/app/src/main/java/com/example/weighttrackerapp_josebustamante)
+- [Browse the enhanced source](https://github.com/Todolomeos/josebustamante-eportfoliofinal/tree/main/artifacts/weight-tracker/app/src/main/java/com/example/weighttrackerapp_josebustamante)
 - [Download the complete enhanced Android project](artifacts/WeightTracker-final.zip)
 - [Implementation and validation notes](https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/CAPSTONE.md)
 
