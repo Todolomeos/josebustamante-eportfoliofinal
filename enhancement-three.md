@@ -10,15 +10,33 @@ The [revised helper](https://github.com/Todolomeos/josebustamante-eportfoliofina
 
 Update and delete operations include both entry ID and user ID. Parameterized selections keep user values separate from SQL syntax.
 
-The current repository also contains a version 4 migration. It preserves complete legacy tables in *_legacy_v4 tables and copies records with known valid owners into the active schema. Records without clear ownership remain archived instead of being assigned to another user.
+The published enhanced artifact also contains a version 4 migration. It preserves complete legacy tables in *_legacy_v4 tables and copies records with known valid owners into the active schema. Records without clear ownership remain archived instead of being assigned to another user.
 
 ## Validation Evidence
 
-The user-owned database design was compiled and manually tested in the Android Emulator during the enhancement work. Two different user accounts were used. User A created weight and goal data. After logging in as User B, User A's information was not visible. Returning to User A showed that the original data was still available. This confirmed user data separation in the tested version.
+The user-owned database design was manually tested in the Android Emulator during the enhancement work. Two different user accounts were used. User A created weight and goal data. After logging in as User B, User A's information was not visible. Returning to User A showed that the original data was still available.
 
-After the later version 4 migration was added to the repository, migration SQL extracted from DatabaseHelper was checked against three earlier schema layouts. Those checks covered copied records, archived records, foreign-key consistency, and user-scoped updates.
+The later version 4 migration was also validated separately on October 5, 2026. The published DatabaseHelper was compiled without editing its migration logic in an isolated Android test copy. The validation used a Pixel 7 emulator running Android 14/API 34.
 
-A dedicated Android version 3 to version 4 upgrade test remains the final migration-specific validation step. This distinction avoids claiming that a migration-specific emulator test has already been completed when it has not.
+Three Android instrumentation tests passed:
+
+- An exact version 3 schema preserved two users, four weight records, and two user goals while archiving the original tables.
+- A legacy ownership scenario kept valid user-owned records active while leaving ownerless and orphaned records only in the legacy archive.
+- A global legacy schema without user ownership kept global weight and goal data in the legacy archive instead of assigning it to a user.
+
+The tests also confirmed:
+
+- database reopening at version 4
+- foreign-key enforcement enabled
+- foreign_key_check returned no violations
+- integrity_check returned ok
+- add, edit, and delete operations worked independently for both users
+- attempts to edit or delete another user's record returned false
+- separate goals persisted for both users
+- inserts for a nonexistent user were rejected by the foreign-key constraint
+- no application crash occurred during migration, login, list display, add, edit, delete, or goal operations
+
+The original local project folder remains at DATABASE_VERSION 3. The version 4 validation was performed against the published enhanced artifact in an isolated copy so the original folder was not modified.
 
 ## Reflection
 
@@ -30,6 +48,6 @@ The application still stores passwords in plaintext, so secure password hashing 
 
 ## Course Outcome Alignment
 
-This enhancement supports Outcome 4 through relational database and migration techniques, Outcome 5 through ownership checks and data separation, and Outcome 3 through consideration of migration and retention trade-offs.
+This enhancement supports Outcome 4 through relational database and migration techniques, Outcome 5 through ownership checks, foreign-key enforcement, and data separation, and Outcome 3 through consideration of migration and retention trade-offs.
 
 [Course outcomes across the portfolio](course-outcomes.md) · [Original and enhanced artifact](artifact.md)
