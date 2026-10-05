@@ -6,90 +6,92 @@ I am currently completing Module Six of the CS-499 Computer Science Capstone at 
 
 My professional interests include cybersecurity, data analysis, and software development. During the program, I have learned that these areas are connected. Software needs to be organized and reliable, data needs to be stored and processed correctly, and security needs to be considered throughout the development process.
 
-My ePortfolio uses the Android Weight Tracker application as the main artifact across software design and engineering, algorithms and data structures, and databases. Using the same application for all three categories has helped me see how changes in one part of a system can affect other parts of the application.
+My ePortfolio uses the Android Weight Tracker application as the main artifact across software design and engineering, algorithms and data structures, and databases. Using the same application for all three categories has helped me understand how changes in one part of a system can affect the rest of the application.
 
 ## Professional Skills and Growth
 
 One of the most important things I learned during the program is that software development is not only about making a program work. Good software should also be organized, maintainable, secure, and understandable to other developers and users.
 
-Communication has been an important part of my growth. During the program, I completed written assignments, project documentation, presentations, and a code review video. The code review helped me practice explaining how an application works, identifying problems, and describing planned improvements in a way that another developer or stakeholder could understand.
+Communication has been an important part of my growth. During the program, I completed technical writing, project documentation, presentations, and a code review video. The code review helped me practice explaining how an application works, identifying weaknesses, and describing planned improvements for another developer, instructor, or stakeholder.
 
-Collaboration is also important in computer science. Even when working on individual projects, I learned that code should be written so another person can understand it. Clear naming, documentation, organization, and separation of responsibilities all support collaboration. I also used instructor feedback throughout the capstone to improve my work and make later enhancements more specific.
+Collaboration is also important in computer science. Even when a project is completed individually, the code and documentation should be clear enough for another person to review and continue. Clear naming, organization, documentation, and separation of responsibilities support that goal. I also used instructor feedback during the capstone to make my technical explanations more specific and to add clearer evidence for testing, complexity, database design, and security.
 
 ## Software Engineering
 
-My software engineering enhancement focused on improving the structure of the Weight Tracker application.
+My Software Design and Engineering enhancement focused on improving the structure of the Weight Tracker application.
 
-The original application worked, but several responsibilities were handled directly inside the Activities. I improved the organization by using helper classes such as AuthManager, ErrorHandler, and UIHelper. AuthManager handles authentication-related logic, while the Activities focus more on the user interface and navigation. ErrorHandler and UIHelper help separate other responsibilities from the Activities.
+The original application placed several responsibilities directly inside the Activities. I improved the organization by using helper classes such as AuthManager, ErrorHandler, and UIHelper. AuthManager handles authentication-related logic, while Activities focus more on navigation and user interaction. ErrorHandler and UIHelper support reusable validation, error handling, and interface behavior.
 
-This enhancement helped me better understand separation of concerns and maintainability. I also tested important functions after the changes, including login, account creation, navigation, adding weights, editing records, deleting records, and setting goals.
+The core application flow was manually tested in the Android Emulator after the enhancement work. Testing included account creation, login, navigation, adding weight records, editing records, deleting records, setting goals, and returning to the list to confirm that the application continued working after the changes.
 
 ## Algorithms and Data Structures
 
-The algorithms and data structures enhancement focused on how the application processes and displays weight records.
+The Algorithms and Data Structures enhancement focused on how the application processes and displays weight records.
 
-The application retrieves records from the SQLite database using a Cursor and processes the records one at a time. If there are n weight records, displaying all of them requires one pass through the records, so the processing is O(n).
+The application retrieves records from SQLite using a Cursor and processes them one at a time. If there are n records, displaying the complete list requires one traversal, so the processing is O(n).
 
-The application also uses logic for adding, editing, deleting, and refreshing weight information. Adding a new weight uses a database insert operation after validation. Updating and deleting use both the weight ID and the user ID so the correct record is changed.
+The revised logic resolves column indices before the loop, closes the Cursor in a finally block, and uses onResume to refresh the list without the earlier duplicate initial load. Add, edit, delete, and refresh behavior was manually tested in the Android Emulator.
 
-I tested these operations manually in the Android Emulator. I added multiple weight records, edited existing records, deleted records, and confirmed that the list refreshed correctly after the changes.
-
-I did not run a formal performance benchmark, so I would not claim that the application became faster. The main improvement was making the data processing clearer, more organized, and better connected to the user data.
+No formal performance benchmark or automated test suite was run. Because of that, I do not claim a measured speed improvement. The improvement is in clearer processing, less repeated work, better lifecycle handling, and user-connected data operations.
 
 ## Databases
 
-The database enhancement improved the SQLite structure and the way the application separates user information.
+The Database enhancement improved the SQLite structure and the way the application separates user information.
 
-I added user_id relationships so that weight and goal records belong to a specific user. I also added foreign key relationships between the users, weights, and goals tables.
+Weights and goals are connected to users with user_id relationships and foreign keys. Database operations use the logged-in user's ID when retrieving, updating, and deleting information.
 
-The structure now follows relationships similar to:
+I tested user data separation with two different accounts. User A created weight records and a goal. After logging out and signing in as User B, User A's information was not visible. When I returned to User A, the original information was still available.
 
-Users → Weights
-
-Users → Goals
-
-Database methods use the logged-in user's ID when retrieving, updating, and deleting information. This helps prevent one user from seeing or changing another user's records.
-
-I tested the database using two different user accounts. The first user added weight records and a goal. After logging out and signing in as the second user, the first user's information was not visible. When I logged back into the first account, the original information was still available.
-
-This testing confirmed that the database correctly separates data between users.
-
-I also experienced a database version problem during the enhancement. The application initially crashed because an older database on the emulator did not contain the new user_id column. I fixed the problem by updating the database version and recreating the database with the new structure.
+The current repository also includes a later version 4 migration that preserves legacy tables and copies records with known owners into the active schema. Migration SQL checks were completed separately. A dedicated Android version 3 to version 4 upgrade test remains before the final Module Seven submission.
 
 ## Security
 
 Security has become more important to me throughout the Computer Science program.
 
-In the Weight Tracker application, separating information by user helped improve data isolation. Input validation, authentication, permissions, and user-specific database operations also helped me understand how security connects to software design.
+In the Weight Tracker application, user-specific database operations, foreign keys, input validation, and permission handling helped improve data protection and integrity. The two-user test also provided evidence that one account could not see another account's stored weight and goal information.
 
-I also understand that the application still has areas that would need improvement before a professional release. For example, password storage should be improved with secure hashing instead of storing passwords in plain text. Recognizing these weaknesses is part of developing a security mindset.
+I also learned that recognizing a weakness is part of having a security mindset. The application still stores passwords in plaintext. I do not consider that secure authentication, and password hashing would be an important improvement before a professional release.
+
+## Course Outcome Reflection
+
+### Outcome 1 — Collaborative Environments and Decision Making
+
+The code review, documentation, technical narratives, and use of instructor feedback helped me practice presenting technical decisions so other people can review them. I learned that collaboration requires understandable code and clear explanations of trade-offs, limitations, and test results. I do not claim that this artifact was a completed team-development project, but the way the work is documented supports collaborative review.
+
+### Outcome 2 — Professional Communication
+
+The two-part code review, written narratives, ePortfolio pages, and this professional self-assessment demonstrate oral and written communication. I worked to explain technical ideas in a way that is accurate but still understandable to different audiences.
+
+### Outcome 3 — Algorithmic Solutions and Trade-offs
+
+The Algorithms and Data Structures enhancement demonstrates this outcome through the O(n) Cursor traversal, reduction of repeated work inside the loop, lifecycle-based refresh behavior, and evaluation of design trade-offs. I also clearly separated measured facts from assumptions by not claiming a performance improvement without a benchmark.
+
+### Outcome 4 — Computing Techniques, Skills, and Tools
+
+The Weight Tracker demonstrates the use of Java, Android development, SQLite, database relationships, validation, Activity lifecycle handling, helper classes, and CRUD operations to improve a working application. These tools were used together to provide clearer organization, better data ownership, and more reliable behavior.
+
+### Outcome 5 — Security Mindset
+
+The database enhancement demonstrates user ownership, data isolation, foreign-key relationships, user-scoped updates and deletes, and input validation. The project also identifies plaintext password storage as a remaining vulnerability instead of presenting the application as fully secure.
 
 ## How the Portfolio Fits Together
 
 The code review, original code, enhanced code, and three enhancement narratives show the process of identifying weaknesses and improving the Weight Tracker application.
 
-The Software Design and Engineering enhancement demonstrates better organization and maintainability.
-
-The Algorithms and Data Structures enhancement demonstrates how the application processes and manages weight records.
-
-The Database enhancement demonstrates improved relationships, data ownership, and user separation.
+The Software Design and Engineering enhancement demonstrates better organization and maintainability. The Algorithms and Data Structures enhancement demonstrates how the application processes and manages weight records. The Database enhancement demonstrates improved relationships, ownership, and separation of user data.
 
 Together, these enhancements show my growth in software engineering, algorithms, databases, testing, security, communication, and problem-solving.
 
 ## Progress in Module Six
 
-At this point, the three main technical enhancements have been completed.
+The three required enhancement categories are represented in the ePortfolio. Core application functionality has been compiled and manually tested in the Android Emulator during the enhancement work.
 
-The Weight Tracker application has been compiled successfully and tested in the Android Emulator. The database enhancement was also tested with two separate user accounts to confirm that user data is kept separate.
-
-My current focus in Module Six is improving the professional self-assessment, reviewing the course outcomes, organizing the ePortfolio, and making sure the GitHub Pages site clearly presents the original and enhanced artifacts, narratives, and code review.
+My current Module Six focus is polishing the Professional Self-Assessment, reviewing the five course outcomes, checking GitHub Pages organization and navigation, and making sure that the original artifact, enhanced artifact, code review, and narratives are easy to find.
 
 ## Remaining Work Before Module Seven
 
-Before the final Module Seven submission, I still need to review the complete ePortfolio and make sure all links work correctly.
+Before the final submission, I need to complete the last portfolio review, confirm all links and navigation, and perform the remaining database migration-specific Android validation.
 
-I also need to confirm that the GitHub Pages site is clear and easy to navigate, that the original and enhanced artifacts are presented correctly, and that each narrative clearly explains the skills and course outcomes demonstrated.
+The professional self-assessment will also receive a final review so that it reflects the completed ePortfolio and any additional instructor feedback received during Module Six.
 
-The professional self-assessment will be reviewed again before the final submission so that it reflects the completed ePortfolio and any additional instructor feedback received during Module Six.
-
-My goal is to enter Module Seven with the main content already completed so that the final week can focus on review, organization, and submission.
+My goal is to enter Module Seven with the main content already complete so the final week can focus on final validation, review, and submission.
