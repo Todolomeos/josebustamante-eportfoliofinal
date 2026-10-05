@@ -32,7 +32,7 @@ The application retrieves records from SQLite using a Cursor and processes them 
 
 The revised logic resolves column indices before the loop, closes the Cursor in a finally block, and uses onResume to refresh the list without the earlier duplicate initial load. Add, edit, delete, and refresh behavior was manually tested in the Android Emulator.
 
-No formal performance benchmark or automated test suite was run. Because of that, I do not claim a measured speed improvement. The improvement is in clearer processing, less repeated work, better lifecycle handling, and user-connected data operations.
+No formal performance benchmark or automated algorithm performance test was run. Because of that, I do not claim a measured speed improvement. The improvement is in clearer processing, less repeated work, better lifecycle handling, and user-connected data operations.
 
 ## Databases
 
@@ -42,13 +42,19 @@ Weights and goals are connected to users with user_id relationships and foreign 
 
 I tested user data separation with two different accounts. User A created weight records and a goal. After logging out and signing in as User B, User A's information was not visible. When I returned to User A, the original information was still available.
 
-The current repository also includes a later version 4 migration that preserves legacy tables and copies records with known owners into the active schema. Migration SQL checks were completed separately. A dedicated Android version 3 to version 4 upgrade test remains before the final Module Seven submission.
+The published enhanced artifact also includes a later version 4 migration that preserves legacy tables and copies records with known owners into the active schema. On October 5, 2026, that migration was compiled and validated separately in an isolated Android test copy on Android 14/API 34.
+
+Three instrumentation tests passed. They confirmed successful migration to version 4, foreign-key enforcement, database integrity, user-scoped add/edit/delete operations, independent goals for two users, rejection of invalid user IDs, and safe archiving of records that could not be connected to a valid owner. No application crash was observed during the tested migration and account/CRUD flows.
+
+The original local project folder remains on DATABASE_VERSION 3. The version 4 validation was performed against the published enhanced artifact without modifying the original folder.
 
 ## Security
 
 Security has become more important to me throughout the Computer Science program.
 
 In the Weight Tracker application, user-specific database operations, foreign keys, input validation, and permission handling helped improve data protection and integrity. The two-user test also provided evidence that one account could not see another account's stored weight and goal information.
+
+The version 4 migration testing also showed that records with unknown or invalid ownership are not assigned to another user. Invalid user IDs were rejected by foreign-key constraints.
 
 I also learned that recognizing a weakness is part of having a security mindset. The application still stores passwords in plaintext. I do not consider that secure authentication, and password hashing would be an important improvement before a professional release.
 
@@ -68,30 +74,28 @@ The Algorithms and Data Structures enhancement demonstrates this outcome through
 
 ### Outcome 4 — Computing Techniques, Skills, and Tools
 
-The Weight Tracker demonstrates the use of Java, Android development, SQLite, database relationships, validation, Activity lifecycle handling, helper classes, and CRUD operations to improve a working application. These tools were used together to provide clearer organization, better data ownership, and more reliable behavior.
+The Weight Tracker demonstrates the use of Java, Android development, SQLite, database relationships, validation, Activity lifecycle handling, helper classes, CRUD operations, and Android instrumentation testing. These tools were used together to improve organization, data ownership, migration behavior, and reliability.
 
 ### Outcome 5 — Security Mindset
 
-The database enhancement demonstrates user ownership, data isolation, foreign-key relationships, user-scoped updates and deletes, and input validation. The project also identifies plaintext password storage as a remaining vulnerability instead of presenting the application as fully secure.
+The database enhancement demonstrates user ownership, data isolation, foreign-key relationships, user-scoped updates and deletes, input validation, and safe handling of records with unknown ownership. The project also identifies plaintext password storage as a remaining vulnerability instead of presenting the application as fully secure.
 
 ## How the Portfolio Fits Together
 
 The code review, original code, enhanced code, and three enhancement narratives show the process of identifying weaknesses and improving the Weight Tracker application.
 
-The Software Design and Engineering enhancement demonstrates better organization and maintainability. The Algorithms and Data Structures enhancement demonstrates how the application processes and manages weight records. The Database enhancement demonstrates improved relationships, ownership, and separation of user data.
+The Software Design and Engineering enhancement demonstrates better organization and maintainability. The Algorithms and Data Structures enhancement demonstrates how the application processes and manages weight records. The Database enhancement demonstrates improved relationships, ownership, migration behavior, and separation of user data.
 
 Together, these enhancements show my growth in software engineering, algorithms, databases, testing, security, communication, and problem-solving.
 
 ## Progress in Module Six
 
-The three required enhancement categories are represented in the ePortfolio. Core application functionality has been compiled and manually tested in the Android Emulator during the enhancement work.
+The three required enhancement categories are represented in the ePortfolio. Core application functionality has been compiled and manually tested in the Android Emulator, and the published version 4 database migration has now passed dedicated Android instrumentation testing.
 
-My current Module Six focus is polishing the Professional Self-Assessment, reviewing the five course outcomes, checking GitHub Pages organization and navigation, and making sure that the original artifact, enhanced artifact, code review, and narratives are easy to find.
+My current Module Six focus is final portfolio polishing, reviewing the five course outcomes, checking GitHub Pages organization and navigation, and making sure that the original artifact, enhanced artifact, code review, and narratives are easy to find.
 
 ## Remaining Work Before Module Seven
 
-Before the final submission, I need to complete the last portfolio review, confirm all links and navigation, and perform the remaining database migration-specific Android validation.
+Before the final submission, I need to complete the last portfolio review, confirm all links and navigation, and incorporate any additional instructor feedback received during Module Six.
 
-The professional self-assessment will also receive a final review so that it reflects the completed ePortfolio and any additional instructor feedback received during Module Six.
-
-My goal is to enter Module Seven with the main content already complete so the final week can focus on final validation, review, and submission.
+My goal is to enter Module Seven with the main content and technical validation already complete so the final week can focus on final review and submission.
