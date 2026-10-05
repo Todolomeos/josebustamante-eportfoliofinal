@@ -26,12 +26,18 @@ The enhanced project includes the application resources, Java source, Gradle fil
 | Software design | More responsibilities remained directly inside Activities | Authentication, validation, and interface support were separated into helper classes, and add/edit behavior was organized more clearly |
 | Algorithms and processing | Repeated work occurred during list traversal and initial loading could happen more than once | Column indices are resolved before traversal, the Cursor is closed reliably, and the list refreshes through onResume |
 | Database | User ownership and goal relationships were not fully enforced | user_id relationships, foreign keys, per-user goals, and owner-scoped updates/deletes protect data separation |
-| Upgrade handling | Earlier database upgrades could lose data | The current version 4 migration preserves legacy tables and migrates records with known owners |
+| Upgrade handling | Earlier database upgrades could lose data | The published version 4 migration preserves legacy tables and migrates records with known owners |
 
 ## Verification
 
 Core Weight Tracker functionality was compiled and manually tested in the Android Emulator during the enhancement work. Testing included account creation, login, navigation, adding, editing, and deleting weights, goal behavior, list refresh, and two-user data separation.
 
-The current repository also includes a later version 4 database migration. Its migration SQL has been checked against three earlier schema layouts for archive preservation, foreign-key consistency, and user-scoped operations.
+The published version 4 database migration was later validated in an isolated Android test copy on a Pixel 7 emulator running Android 14/API 34. Three instrumentation tests passed. The tests covered an exact version 3 schema and two additional legacy ownership scenarios.
 
-A dedicated Android version 3 to version 4 upgrade test remains the final migration-specific validation item before the Module Seven submission. Password storage remains a known security limitation and is not represented as secure hashing.
+Validation confirmed database version 4 reopening, foreign-key enforcement, foreign_key_check with no violations, integrity_check = ok, user-scoped add/edit/delete operations, independent goals, rejection of invalid user IDs, and preservation of ownerless or global legacy data in archive tables instead of assigning it to another user.
+
+No application crash was observed during migration, login, list display, add, edit, delete, or goal operations.
+
+The original local project folder remains on DATABASE_VERSION 3. The version 4 migration belongs to the published enhanced artifact and was validated separately without modifying that original folder.
+
+Password storage remains a known security limitation and is not represented as secure hashing.
