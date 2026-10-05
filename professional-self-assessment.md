@@ -2,11 +2,11 @@
 
 ## Introduction
 
-I am currently completing Module Six of the CS-499 Computer Science Capstone at Southern New Hampshire University. This professional self-assessment brings together what I have learned throughout the Computer Science program and the progress I have made while building my ePortfolio.
+As I prepare my final CS-499 Computer Science Capstone ePortfolio at Southern New Hampshire University, this professional self-assessment brings together what I have learned throughout the Computer Science program and the growth demonstrated in my Weight Tracker project.
 
-My professional interests include cybersecurity, data analysis, and software development. During the program, I have learned that these areas are connected. Software needs to be organized and reliable, data needs to be stored and processed correctly, and security needs to be considered throughout the development process.
+My professional interests include cybersecurity, data analysis, and software development. During the program, I learned that these areas are connected. Software needs to be organized and reliable, data needs to be stored and processed correctly, and security needs to be considered throughout the development process.
 
-My ePortfolio uses the Android Weight Tracker application as the main artifact across software design and engineering, algorithms and data structures, and databases. Using the same application for all three categories has helped me understand how changes in one part of a system can affect the rest of the application.
+My ePortfolio uses the Android Weight Tracker application as the main artifact across software design and engineering, algorithms and data structures, and databases. Using the same application for all three categories helped me understand how changes in one part of a system can affect the rest of the application.
 
 ## Professional Skills and Growth
 
@@ -32,7 +32,7 @@ The application retrieves records from SQLite using a Cursor and processes them 
 
 The revised logic resolves column indices before the loop, closes the Cursor in a finally block, and uses onResume to refresh the list without the earlier duplicate initial load. Add, edit, delete, and refresh behavior was manually tested in the Android Emulator.
 
-No formal performance benchmark or automated algorithm performance test was run. Because of that, I do not claim a measured speed improvement. The improvement is in clearer processing, less repeated work, better lifecycle handling, and user-connected data operations.
+For this algorithm enhancement, no formal performance benchmark or automated algorithm-performance suite was run. Because of that, I do not claim a measured speed improvement. The improvement is in clearer processing, less repeated work, better lifecycle handling, and user-connected data operations. The later instrumentation tests described in the database enhancement were focused on migration and user-scoped database behavior, not algorithm performance.
 
 ## Databases
 
@@ -70,7 +70,7 @@ The two-part code review, written narratives, ePortfolio pages, and this profess
 
 ### Outcome 3 — Algorithmic Solutions and Trade-offs
 
-The Algorithms and Data Structures enhancement demonstrates this outcome through the O(n) Cursor traversal, reduction of repeated work inside the loop, lifecycle-based refresh behavior, and evaluation of design trade-offs. I also clearly separated measured facts from assumptions by not claiming a performance improvement without a benchmark.
+The Algorithms and Data Structures enhancement demonstrates this outcome through the O(n) Cursor traversal, reduction of repeated work inside the loop, lifecycle-based refresh behavior, and evaluation of design trade-offs. I also separated measured facts from assumptions by not claiming a performance improvement without a benchmark.
 
 ### Outcome 4 — Computing Techniques, Skills, and Tools
 
@@ -88,14 +88,8 @@ The Software Design and Engineering enhancement demonstrates better organization
 
 Together, these enhancements show my growth in software engineering, algorithms, databases, testing, security, communication, and problem-solving.
 
-## Progress in Module Six
+## Portfolio Summary
 
-The three required enhancement categories are represented in the ePortfolio. Core application functionality has been compiled and manually tested in the Android Emulator, and the published version 4 database migration has now passed dedicated Android instrumentation testing.
+The three required enhancement categories are represented in this ePortfolio, and the technical work is supported by manual Android Emulator testing and dedicated database migration instrumentation testing.
 
-My current Module Six focus is final portfolio polishing, reviewing the five course outcomes, checking GitHub Pages organization and navigation, and making sure that the original artifact, enhanced artifact, code review, and narratives are easy to find.
-
-## Remaining Work Before Module Seven
-
-Before the final submission, I need to complete the last portfolio review, confirm all links and navigation, and incorporate any additional instructor feedback received during Module Six.
-
-My goal is to enter Module Seven with the main content and technical validation already complete so the final week can focus on final review and submission.
+This portfolio presents the original and enhanced artifact, the code review, the three enhancement narratives, the course outcome evidence, and this professional self-assessment as one complete view of my growth throughout the Computer Science program.
