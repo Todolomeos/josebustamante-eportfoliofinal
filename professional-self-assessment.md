@@ -16,6 +16,18 @@ Communication has been an important part of my growth. During the program, I com
 
 Collaboration is also important in computer science. Even when a project is completed individually, the code and documentation should be clear enough for another person to review and continue. Clear naming, organization, documentation, and separation of responsibilities support that goal. I also used instructor feedback during the capstone to make my technical explanations more specific and to add clearer evidence for testing, complexity, database design, and security.
 
+## Examples From the Computer Science Program
+
+My work in other courses also helped me build skills that support the capstone.
+
+In CS 305 Software Security, I worked on a project for Artemis Financial. I added HTTPS, AES-256 encryption, SHA-256 hashing, certificates, and OWASP Dependency-Check. I also had to troubleshoot the dependency scanner and review the application again after making security changes. This experience helped me understand that security needs to be part of development from the beginning, not something added only at the end.
+
+In CS 300 Data Structures and Algorithms, I compared vectors, hash tables, and binary search trees while working with course data. I learned that each structure has different strengths and weaknesses for searching, ordering, and performance. That experience helped me think more carefully about trade-offs instead of choosing a solution only because it works.
+
+In CS 340 Client-Server Development, I built a dashboard for Grazioso Salvare using MongoDB, Python, Pandas, Dash, a data table, a chart, and a map. The project required me to connect database queries to user needs and present the results in a way that helped the client make decisions. This strengthened my understanding of database design, data processing, and communication with stakeholders.
+
+These projects are not additional capstone artifacts. They are examples from the Computer Science program that show how my experience in security, algorithms, databases, testing, and client-focused software development supports the work presented in this ePortfolio.
+
 ## Software Engineering
 
 My Software Design and Engineering enhancement focused on improving the structure of the Weight Tracker application.
