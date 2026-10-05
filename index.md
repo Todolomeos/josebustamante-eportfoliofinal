@@ -21,6 +21,8 @@ My professional interests are **cybersecurity and data analysis**. This CS-499 p
 
 The three required enhancement categories are represented in this portfolio. Core Weight Tracker functionality was compiled and manually tested in the Android Emulator during the enhancement work, including login, account creation, navigation, adding, editing, deleting, and refreshing weight records, user goals, and user data separation.
 
-The current enhanced repository also includes a later version 4 database migration. Its migration SQL has been checked against multiple legacy schema layouts. A dedicated Android version 3 to version 4 upgrade test remains a final validation item before the Module Seven submission.
+The published enhanced artifact also includes a later SQLite database migration from version 3 to version 4. On October 5, 2026, that published version 4 DatabaseHelper was compiled and validated in an isolated Android test copy using a Pixel 7 emulator running Android 14/API 34. Three instrumentation tests passed. The validation confirmed migration behavior, foreign-key enforcement, database integrity, user-scoped CRUD operations, independent goals, and preserved separation between two users. No application crash was observed during migration or the tested account and CRUD flows.
 
-The remaining Module Six work is focused on polishing the ePortfolio, checking links and navigation, reviewing course-outcome evidence, and preparing the final professional self-assessment.
+The original local project folder remains on DATABASE_VERSION 3. The version 4 migration is part of the published enhanced artifact and was validated separately without modifying the original local folder.
+
+The remaining Module Six work is focused on final portfolio polishing, checking links and navigation, reviewing course-outcome evidence, and preparing for the Module Seven submission.
