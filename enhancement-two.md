@@ -22,7 +22,7 @@ Insert, update, and delete operations are handled through database methods. Upda
 
 The WeightListActivity flow was manually tested in the Android Emulator during the enhancement work. I added multiple weight records and confirmed that they appeared in the list. I edited an existing record and confirmed that the updated information appeared after returning to the list. I deleted a record and confirmed that it was removed. Repeated add and edit actions also confirmed that onResume refreshed the displayed records.
 
-No automated test suite or formal performance benchmark was run, so no automated pass/fail count or measured performance gain is claimed.
+For this Algorithms and Data Structures enhancement specifically, no automated algorithm test suite or formal performance benchmark was run, so no automated pass/fail count or measured performance gain is claimed. The three instrumentation tests described in Enhancement Three were later created for database migration and user-scoped database validation; they are separate from the algorithm-performance evidence presented here.
 
 ## Reflection
 
