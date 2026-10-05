@@ -64,17 +64,9 @@ In the Weight Tracker application, separating information by user helped improve
 
 I also understand that the application still has areas that would need improvement before a professional release. For example, password storage should be improved with secure hashing instead of storing passwords in plain text. Recognizing these weaknesses is part of developing a security mindset.
 
-## Experience Beyond the Capstone Artifact
-
-Other coursework has also helped me build my computer science skills.
-
-In my full-stack development coursework, I worked with the Travlr Getaways project using technologies such as Express, MongoDB, Mongoose, APIs, and application views. This helped me understand how a front end, server, API, and database work together.
-
-This experience is different from the Android Weight Tracker project, but both helped me understand how software systems connect user interfaces, application logic, and data.
-
 ## How the Portfolio Fits Together
 
-The code review, original code, enhanced code, and three enhancement narratives show the process of identifying weaknesses and improving a software application.
+The code review, original code, enhanced code, and three enhancement narratives show the process of identifying weaknesses and improving the Weight Tracker application.
 
 The Software Design and Engineering enhancement demonstrates better organization and maintainability.
 
