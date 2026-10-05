@@ -1,20 +1,61 @@
-# CS-499 Weight Tracker enhancements
+# CS-499 Weight Tracker Enhancements
 
-The Android source in this repository is based on WeightTrackerApp_JoseBustamante2. The original launch-plan README is preserved.
+The Android source in this repository is based on WeightTrackerApp_JoseBustamante2.
 
-## Software design and engineering
-LoginActivity delegates authentication to AuthManager, validation to ErrorHandler and loading-state presentation to UIHelper. AddWeightActivity uses a shared save path for adding and editing entries. The revised edit flow carries the original date into the form and updates both weight and date, scoped to the current user. Weight and goal input must be positive and finite.
+## Software Design and Engineering
 
-## Algorithms and data structures
-WeightListActivity traverses the query cursor once to render the current user's entries. Column indices are resolved before traversal, the cursor closes in a finally block, and the initial list loads through onResume rather than both onCreate and onResume. Rendering remains linear in the number of displayed rows; no benchmark or improvement in asymptotic complexity is claimed. Database access still runs on the UI thread and the table renders every row, so pagination and background queries remain future work.
+LoginActivity delegates authentication to AuthManager, validation to ErrorHandler, and loading-state presentation to UIHelper. AddWeightActivity uses a shared save path for adding and editing entries. The revised edit flow carries the original date into the form and updates both weight and date, scoped to the current user. Weight and goal input must be positive and finite.
+
+## Algorithms and Data Structures
+
+WeightListActivity traverses the query Cursor once to render the current user's entries. Column indices are resolved before traversal, the Cursor closes in a finally block, and the initial list loads through onResume rather than both onCreate and onResume.
+
+Rendering remains O(n) in the number of displayed rows. No measured performance benchmark or improvement in asymptotic complexity is claimed. Database access still runs on the UI thread and the table renders every row, so pagination and background queries remain reasonable future improvements.
 
 ## Databases
-The schema relates weights and goals to users, enables foreign-key enforcement and limits each user to one goal. Updates and deletes check both entry ID and user ID. Version 4 replaces the former destructive upgrade with a transactional migration: complete old tables remain in *_legacy_v4 tables, and records with identifiable valid owners are copied to the active schema. Ownerless weights and global goals remain archived, without guessing ownership. Archived health records still require a deliberate recovery and retention policy.
 
-## Validation and limitations
-The migration SQL extracted directly from DatabaseHelper.java passed Python SQLite checks for a global-goal schema, an owned-goal schema and an older schema without weight ownership. The checks verified preserved archives, active records, foreign-key consistency and user-scoped updates. These checks do not replace Android instrumentation or device testing.
+The schema relates weights and goals to users, enables foreign-key enforcement, and limits each user to one goal. Updates and deletes check both entry ID and user ID.
 
-The Android build was attempted but is not yet verified in this restricted environment. Passwords remain stored as plaintext; this student project is not ready to handle production health information. SMS behavior and the complete account/CRUD flow require device or emulator validation before release.
+The published version 4 DatabaseHelper replaces the earlier destructive upgrade behavior with a migration that preserves complete old tables in *_legacy_v4 tables. Records with identifiable valid owners are copied into the active schema. Ownerless, orphaned, and global legacy records remain archived instead of being assigned to another user.
 
-## Open locally
-Open this folder in Android Studio and configure the local Android SDK. Run assembleDebug and test account creation, login, adding/editing/deleting weights, per-user goals and SMS permission behavior. Verify an upgrade using a populated version-3 database in addition to a clean install.
+## Android Validation
+
+On October 5, 2026, the published version 4 DatabaseHelper was validated in an isolated Android test copy without changing its migration logic.
+
+Environment:
+
+- Pixel 7 Android Emulator
+- Android 14 / API 34
+- application and test APKs installed successfully
+- published version 4 DatabaseHelper compiled successfully
+
+Three Android instrumentation tests passed.
+
+The validation covered:
+
+1. An exact version 3 schema with two users, four weights, and two user goals.
+2. A synthetic legacy ownership scenario containing valid, ownerless, and orphaned records.
+3. A synthetic global legacy schema without user ownership columns.
+
+The tests confirmed:
+
+- successful opening and reopening at database version 4
+- preservation of both user IDs and authentication
+- foreign-key enforcement enabled
+- foreign_key_check returned no violations
+- integrity_check returned ok
+- add, edit, and delete operations worked for both users
+- another user's record could not be edited or deleted
+- separate goals persisted for both users
+- inserts for nonexistent user ID 999 were rejected by the foreign-key constraint
+- ownerless, orphaned, and global legacy records remained archived instead of being assigned to another user
+
+The application was also opened through LoginActivity and the account/list flow was checked through the emulator UI. Login, list display, add, edit, delete, and goal operations worked for both users, and no application crash was observed during the tested flows.
+
+The original local project folder remains on DATABASE_VERSION 3. The version 4 migration belongs to the published enhanced artifact and was validated separately so the original folder remained unchanged.
+
+## Limitations
+
+The validation applies to the published DatabaseHelper and the tested scenarios on Android 14/API 34. It does not claim coverage of every Android device or every possible damaged database.
+
+Passwords are still stored as plaintext. This student project should not be represented as production-ready secure authentication until password storage is improved.
