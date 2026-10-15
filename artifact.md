@@ -14,45 +14,21 @@
 <article class="enhancement-card"><span class="number">02</span><h3>Algorithms &amp; Data Structures</h3><p>A single Cursor traversal displays the records. Reused column indexes reduce repeated work without changing O(n).</p><p class="skill">Algorithmic reasoning · Data flow</p></article>
 <article class="enhancement-card"><span class="number">03</span><h3>Databases</h3><p>User relationships and foreign keys connect records to their owners. Queries check ownership when loading and changing data.</p><p class="skill">Relational design · Data isolation</p></article>
 </div></section>
-<section aria-labelledby="code-title"><h2 id="code-title">The change in code</h2><p>The original loop resolves column names for every record. The final published version resolves the indexes once before traversing the Cursor.</p><div class="comparison-grid code-comparison"><figure><figcaption>Original · repeated column lookups</figcaption><pre><code>        Cursor cursor = db.getAllWeights();
+<section aria-labelledby="code-title"><h2 id="code-title">Before and After</h2><p>I changed the weight-loading loop so it looks up the column indexes once before reading the records. The examples below show the original code and the final published version.</p><div class="comparison-grid code-comparison"><figure><figcaption>Before: column lookup inside the loop</figcaption><pre><code>do {
+    int id = cursor.getInt(
+            cursor.getColumnIndexOrThrow(
+                    DatabaseHelper.COL_WEIGHT_ID
+            )
+    );
+</code></pre></figure><figure><figcaption>After: column indexes set before the loop</figcaption><pre><code>int idIndex = cursor.getColumnIndexOrThrow(&quot;id&quot;);
+int weightIndex = cursor.getColumnIndexOrThrow(&quot;weight&quot;);
+int dateIndex = cursor.getColumnIndexOrThrow(&quot;date&quot;);
+while (cursor.moveToNext()) {
 
-        if (cursor.moveToFirst()) {
-
-            do {
-                int id = cursor.getInt(
-                        cursor.getColumnIndexOrThrow(
-                                DatabaseHelper.COL_WEIGHT_ID
-                        )
-                );
-
-                String date = cursor.getString(
-                        cursor.getColumnIndexOrThrow(
-                                DatabaseHelper.COL_WEIGHT_DATE
-                        )
-                );
-
-                double weight = cursor.getDouble(
-                        cursor.getColumnIndexOrThrow(
-                                DatabaseHelper.COL_WEIGHT_VALUE
-                        )
-                );</code></pre></figure><figure><figcaption>Enhanced · indexes reused during traversal</figcaption><pre><code>        Cursor cursor = db.getWeightsForUser(userId);
-
-        try {
-        int idIndex = cursor.getColumnIndexOrThrow(&quot;id&quot;);
-        int weightIndex = cursor.getColumnIndexOrThrow(&quot;weight&quot;);
-        int dateIndex = cursor.getColumnIndexOrThrow(&quot;date&quot;);
-        while (cursor.moveToNext()) {
-
-            int id = cursor.getInt(
-                    idIndex
-            );
-
-            double weight = cursor.getDouble(
-                    weightIndex
-            );
-
-            String date = cursor.getString(
-                    dateIndex</code></pre></figure></div><p>Traversal remains O(n). No benchmark or automated algorithm test suite was run, and no measured speed improvement is claimed.</p></section>
-<section aria-labelledby="validation-title"><h2 id="validation-title">Validation evidence</h2><div class="evidence-grid"><article><strong>3 passed</strong><span>Database instrumentation tests</span></article><article><strong>2 users</strong><span>Independent records and goals</span></article><article><strong>3 → 4</strong><span>Published database migration</span></article><article><strong>API 34</strong><span>Pixel 7 · Android 14</span></article></div><div class="validation-detail"><h3>Database checks</h3><ul><li>Foreign keys enabled; foreign_key_check returned no violations</li><li>integrity_check returned ok</li><li>Cross-user update and delete attempts returned false</li><li>Invalid user inserts were rejected</li><li>No crashes observed during the tested migration and account/CRUD flows</li></ul><h3>Manual application checks</h3><p>Account creation, duplicate usernames, empty fields, valid and invalid login, navigation, add/edit/delete weights, goals, refresh, and two-user data separation.</p><p>The published version 4 artifact was validated in an isolated Android copy. The original local enhanced project remains at DATABASE_VERSION 3. Passwords remain in plaintext; input validation and data isolation do not provide secure password storage.</p><a class="text-link" href="https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/CAPSTONE.md">Implementation and validation notes ↗</a></div></section>
+    int id = cursor.getInt(
+            idIndex
+    );
+</code></pre></figure></div><p>Traversal remains O(n). No benchmark or automated algorithm test suite was run, and no measured speed improvement is claimed.</p></section>
+<section aria-labelledby="validation-title"><h2 id="validation-title">Testing Results</h2><ul class="testing-results"><li>Three database instrumentation tests passed.</li><li>Two users kept separate weight records and goals.</li><li>The published database migration from version 3 to 4 was checked.</li><li>Testing used a Pixel 7 emulator with Android 14 (API 34).</li></ul><div class="validation-detail"><h3>Database checks</h3><ul><li>Foreign keys enabled; foreign_key_check returned no violations</li><li>integrity_check returned ok</li><li>Cross-user update and delete attempts returned false</li><li>Invalid user inserts were rejected</li><li>No crashes observed during the tested migration and account/CRUD flows</li></ul><h3>Manual application checks</h3><p>Account creation, duplicate usernames, empty fields, valid and invalid login, navigation, add/edit/delete weights, goals, refresh, and two-user data separation.</p><p>The published version 4 artifact was validated in an isolated Android copy. The original local enhanced project remains at DATABASE_VERSION 3. Passwords remain in plaintext; input validation and data isolation do not provide secure password storage.</p><a class="text-link" href="https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/CAPSTONE.md">Implementation and validation notes ↗</a></div></section>
 <section class="project-files" aria-labelledby="files-title"><h2 id="files-title">Project files</h2><div class="file-actions"><a class="action secondary" href="artifacts/WeightTracker-original.zip">Download Original Project</a><a class="action secondary" href="artifacts/WeightTracker-final.zip">Download Enhanced Project</a><a class="action secondary" href="code-review.html">Watch Code Review</a></div></section>
 </div>
