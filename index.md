@@ -40,21 +40,18 @@ Course Outcome 5 is about anticipating vulnerabilities, reducing design flaws, a
 
 In the capstone app, using the user ID in queries and checking both the record ID and user ID for updates and deletes helped keep users’ data separate. Foreign keys also helped reject records that did not belong to a valid user. These are useful improvements, but passwords still remain in plaintext. Input validation is not the same as secure authentication, and password hashing was not implemented. Recognizing this limitation is part of my security mindset.
 
-### Next Steps
+### Professional Growth and Career Goals
 
-Previous courses are examples of my learning across the program. They provide context for my skills and goals; they are not additional capstone artifacts. My capstone work shows how software design, algorithms, databases, communication, and security connect in one application.
+My coursework helped me understand the kind of work I want to do and the habits I want to bring to a workplace. I am interested in cybersecurity and data analysis because I enjoy finding problems, understanding information, and thinking about how to protect it. Software development gives me a foundation for both areas. Knowing how an application is built helps me ask better questions about how it uses data and where it may fail.
 
-I want to keep building my cybersecurity and data analysis skills after graduation. I am considering certifications such as Security+ and further training in data analysis. I also want to improve my testing skills and learn more about secure password storage. This program helped me become more careful about how I build, review, and explain software. I can now look at an existing project, find weaknesses, make useful changes, and describe the results in a clear way.
+In CS 340, my Grazioso Salvare dashboard connected a Python CRUD module and MongoDB to a table, chart, map, and rescue filters. That project helped me see how technical work can support a person's decisions. The goal was not just to show data. It was to help someone find useful information without searching through every record by hand. This experience strengthened my interest in work that connects data, clear communication, and practical needs.
 
-[Download my Professional Self-Assessment in Word](documents/Professional%20Self%20Assessment%20Jose%20Bustamante.docx)
+CS 300 helped me think more carefully about the steps a program takes to solve a problem. CS 305 helped me look for security concerns and explain why they matter. Together with my other coursework, these experiences changed how I approach a project. I try to understand the problem first, review the existing work, make a clear change, and check the result. When something does not work, I need to understand the cause instead of only making the error disappear.
 
-## Explore the Work
+One strength I am developing is explaining my work honestly. I can describe what I changed, why I changed it, and what evidence supports the result. I also recognize when a feature still needs improvement. My Weight Tracker project taught me that a working application can still have security limitations, and that a clearer loop does not automatically prove a speed increase. Being precise about these differences is a habit I want to bring to my professional work.
 
-My Weight Tracker application is the single capstone artifact used across all three enhancement categories. Each narrative below can be read directly on this website and also downloaded as a Word document.
+As a new graduate, I want to contribute through careful problem-solving, readable code, and a willingness to learn from feedback. I want to understand the needs of the people using a system and communicate clearly with the people maintaining it. I still have more to learn, especially about secure password storage, automated testing, and data analysis. I am considering Security+ and further study in these areas as part of my next steps.
 
-- [Watch the two-part Code Review](code-review.md)
-- [Compare the original and enhanced Weight Tracker artifact](artifact.md)
-- [Read Enhancement One: Software Design and Engineering](enhancement-one.md)
-- [Read Enhancement Two: Algorithms and Data Structures](enhancement-two.md)
-- [Read Enhancement Three: Databases](enhancement-three.md)
-- [Review the five course outcomes and their evidence](course-outcomes.md)
+This portfolio brings my learning together through one capstone artifact. The three Weight Tracker enhancements show how software design, algorithms, databases, and security affect each other. The code review and narratives explain my decisions and what I learned along the way. I am finishing the program with a stronger foundation, clearer career goals, and work I can use to explain what I am ready to contribute and where I want to grow.
+
+[Professional Self-Assessment Word document](documents/Professional%20Self%20Assessment%20Jose%20Bustamante.docx)
