@@ -1,58 +1,58 @@
-# Weight Tracker — Original and Enhanced Artifact
+<div class="artifact-showcase">
+<p class="eyebrow">CS 499 · Capstone artifact · Java / Android / SQLite</p>
+<h1>Weight Tracker</h1>
+<p class="lead">One application. Three areas of growth: software design, algorithms, and databases.</p>
+<p>Originally created in CS 360, Weight Tracker supports account creation, login, weight history, goals, and optional SMS notifications.</p>
+<section aria-labelledby="comparison-title">
+<h2 id="comparison-title">From the original app to the enhanced artifact</h2>
+<div class="comparison-grid">
+<article class="comparison-card before"><span class="stage">Before</span><h3>Original implementation</h3><ul><li>More application logic inside Activities</li><li>Column lookups repeated during record traversal</li><li>Weight records and goals not fully scoped to users</li><li>Earlier upgrades could discard stored data</li></ul><a class="text-link" href="https://github.com/Todolomeos/josebustamante-eportfoliofinal/tree/main/artifacts/weight-tracker-original">View original source ↗</a></article>
+<article class="comparison-card after"><span class="stage">After</span><h3>Enhanced implementation</h3><ul><li>Separate authentication, validation, and UI helpers</li><li>Column indexes resolved before the O(n) traversal</li><li>User-scoped records, goals, updates, and deletes</li><li>Version 4 migration preserves legacy data</li></ul><a class="text-link" href="https://github.com/Todolomeos/josebustamante-eportfoliofinal/tree/main/artifacts/weight-tracker/app/src/main/java/com/example/weighttrackerapp_josebustamante">View enhanced source ↗</a></article>
+</div></section>
+<section aria-labelledby="enhancements-title"><h2 id="enhancements-title">Three enhancements, one connected artifact</h2><div class="enhancement-grid">
+<article class="enhancement-card"><span class="number">01</span><h3>Software Design &amp; Engineering</h3><p>AuthManager, ErrorHandler, and UIHelper separate responsibilities. Activities manage their screens and navigation.</p><p class="skill">Separation of concerns · Maintainability</p><a class="action" href="enhancement-one.html">Read Narrative <span aria-hidden="true">→</span></a></article>
+<article class="enhancement-card"><span class="number">02</span><h3>Algorithms &amp; Data Structures</h3><p>A single Cursor traversal displays the records. Reused column indexes reduce repeated work without changing O(n).</p><p class="skill">Algorithmic reasoning · Data flow</p><a class="action" href="enhancement-two.html">Read Narrative <span aria-hidden="true">→</span></a></article>
+<article class="enhancement-card"><span class="number">03</span><h3>Databases</h3><p>User relationships and foreign keys connect records to their owners. Queries check ownership when loading and changing data.</p><p class="skill">Relational design · Data isolation</p><a class="action" href="enhancement-three.html">Read Narrative <span aria-hidden="true">→</span></a></article>
+</div></section>
+<section aria-labelledby="code-title"><h2 id="code-title">The change in code</h2><p>The original loop resolves column names for every record. The final published version resolves the indexes once before traversing the Cursor.</p><div class="comparison-grid code-comparison"><figure><figcaption>Original · repeated column lookups</figcaption><pre><code>        Cursor cursor = db.getAllWeights();
 
-Weight Tracker is an Android application written in Java. It supports account creation, login, weight records, per-user goals, and optional SMS notifications.
+        if (cursor.moveToFirst()) {
 
-## Original Work
+            do {
+                int id = cursor.getInt(
+                        cursor.getColumnIndexOrThrow(
+                                DatabaseHelper.COL_WEIGHT_ID
+                        )
+                );
 
-The archived original files preserve the application before the CS-499 enhancements.
+                String date = cursor.getString(
+                        cursor.getColumnIndexOrThrow(
+                                DatabaseHelper.COL_WEIGHT_DATE
+                        )
+                );
 
-- [Browse the archived original application files](https://github.com/Todolomeos/josebustamante-eportfoliofinal/tree/main/artifacts/weight-tracker-original)
-- [Download the original application archive](artifacts/WeightTracker-original.zip)
-- [Original WeightListActivity](https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/capstone/baseline/WeightListActivity_ORIGINAL.java)
-- [DatabaseHelper before the database enhancement](https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/capstone/baseline/DatabaseHelper_before_database_enhancement.java)
+                double weight = cursor.getDouble(
+                        cursor.getColumnIndexOrThrow(
+                                DatabaseHelper.COL_WEIGHT_VALUE
+                        )
+                );</code></pre></figure><figure><figcaption>Enhanced · indexes reused during traversal</figcaption><pre><code>        Cursor cursor = db.getWeightsForUser(userId);
 
-## Enhanced Work
+        try {
+        int idIndex = cursor.getColumnIndexOrThrow(&quot;id&quot;);
+        int weightIndex = cursor.getColumnIndexOrThrow(&quot;weight&quot;);
+        int dateIndex = cursor.getColumnIndexOrThrow(&quot;date&quot;);
+        while (cursor.moveToNext()) {
 
-- [Browse the enhanced source](https://github.com/Todolomeos/josebustamante-eportfoliofinal/tree/main/artifacts/weight-tracker/app/src/main/java/com/example/weighttrackerapp_josebustamante)
-- [Download the complete enhanced Android project](artifacts/WeightTracker-final.zip)
-- [Implementation and validation notes](https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/CAPSTONE.md)
+            int id = cursor.getInt(
+                    idIndex
+            );
 
-The enhanced project includes the application resources, Java source, Gradle files, and preserved comparison files.
+            double weight = cursor.getDouble(
+                    weightIndex
+            );
 
-## Read the Enhancement Narratives
-
-These pages explain the changes, skills, learning, and course outcomes for the same Weight Tracker artifact. The complete narratives are readable here without downloading a document.
-
-- [Software Design and Engineering narrative](enhancement-one.md)
-- [Algorithms and Data Structures narrative](enhancement-two.md)
-- [Databases narrative](enhancement-three.md)
-
-## What Changed
-
-| Area | Earlier implementation | Enhanced implementation |
-| --- | --- | --- |
-| Software design | More responsibilities remained directly inside Activities | Authentication, validation, and interface support were separated into helper classes, and add/edit behavior was organized more clearly |
-| Algorithms and processing | Repeated work occurred during list traversal and initial loading could happen more than once | Column indices are resolved before traversal, the Cursor is closed reliably, and the list refreshes through onResume |
-| Database | User ownership and goal relationships were not fully enforced | user_id relationships, foreign keys, per-user goals, and owner-scoped updates/deletes protect data separation |
-| Upgrade handling | Earlier database upgrades could lose data | The published version 4 migration preserves legacy tables and migrates records with known owners |
-
-## Verification
-
-Core Weight Tracker functionality was compiled and manually tested in the Android Emulator during the enhancement work. Testing included account creation, login, navigation, adding, editing, and deleting weights, goal behavior, list refresh, and two-user data separation.
-
-The published version 4 database migration was later validated in an isolated Android test copy on a Pixel 7 emulator running Android 14/API 34. Three instrumentation tests passed. The tests covered an exact version 3 schema and two additional legacy ownership scenarios.
-
-Validation confirmed database version 4 reopening, foreign-key enforcement, foreign_key_check with no violations, integrity_check = ok, user-scoped add/edit/delete operations, independent goals, rejection of invalid user IDs, and preservation of ownerless or global legacy data in archive tables instead of assigning it to another user.
-
-No application crash was observed during migration, login, list display, add, edit, delete, or goal operations.
-
-The original local project folder remains on DATABASE_VERSION 3. The version 4 migration belongs to the published enhanced artifact and was validated separately without modifying that original folder.
-
-Password storage remains a known security limitation and is not represented as secure hashing.
-
-## Final Word Documents
-
-- [Professional Self Assessment Jose Bustamante](documents/Professional%20Self%20Assessment%20Jose%20Bustamante.docx)
-- [Enhancement One Final Software Design Engineering](documents/Enhancement%20One%20Final%20Software%20Design%20Engineering.docx)
-- [Enhancement Two Final Jose Bustamante](documents/Enhancement%20Two%20Final%20Jose%20Bustamante.docx)
-- [Enhancement Three Final Databases Jose Bustamante](documents/Enhancement%20Three%20Final%20Databases%20Jose%20Bustamante.docx)
+            String date = cursor.getString(
+                    dateIndex</code></pre></figure></div><p>Traversal remains O(n). No benchmark or automated algorithm test suite was run, and no measured speed improvement is claimed.</p></section>
+<section aria-labelledby="validation-title"><h2 id="validation-title">Validation evidence</h2><div class="evidence-grid"><article><strong>3 passed</strong><span>Database instrumentation tests</span></article><article><strong>2 users</strong><span>Independent records and goals</span></article><article><strong>3 → 4</strong><span>Published database migration</span></article><article><strong>API 34</strong><span>Pixel 7 · Android 14</span></article></div><div class="validation-detail"><h3>Database checks</h3><ul><li>Foreign keys enabled; foreign_key_check returned no violations</li><li>integrity_check returned ok</li><li>Cross-user update and delete attempts returned false</li><li>Invalid user inserts were rejected</li><li>No crashes observed during the tested migration and account/CRUD flows</li></ul><h3>Manual application checks</h3><p>Account creation, duplicate usernames, empty fields, valid and invalid login, navigation, add/edit/delete weights, goals, refresh, and two-user data separation.</p><p>The published version 4 artifact was validated in an isolated Android copy. The original local enhanced project remains at DATAhttps://github.com/Todolomeos/josebustamante-eportfoliofinal_VERSION 3. Passwords remain in plaintext; input validation and data isolation do not provide secure password storage.</p><a class="text-link" href="https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/CAPSTONE.md">Implementation and validation notes ↗</a></div></section>
+<section class="project-files" aria-labelledby="files-title"><h2 id="files-title">Project files</h2><div class="file-actions"><a class="action secondary" href="artifacts/WeightTracker-original.zip">Download Original Project</a><a class="action secondary" href="artifacts/WeightTracker-final.zip">Download Enhanced Project</a><a class="action secondary" href="code-review.html">Watch Code Review</a></div></section>
+</div>
