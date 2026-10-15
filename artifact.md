@@ -23,8 +23,23 @@
 <h2 id="code-title">Before and After</h2>
 <h3>Before</h3>
 <p>In the original weight-loading loop, I used getColumnIndexOrThrow inside the loop to find the ID, weight, and date columns for each record. This meant the application repeated the same column lookups as it read the records.</p>
+<pre style="background:#f6f7f8;color:#172c3e;border:0;border-radius:0;white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.7 Consolas,monospace;padding:16px;"><code>int id = cursor.getInt(
+        cursor.getColumnIndexOrThrow(
+                DatabaseHelper.COL_WEIGHT_ID
+        )
+);</code></pre>
 <h3>After</h3>
 <p>In the final published version, I moved those column lookups before the loop and stored the indexes in idIndex, weightIndex, and dateIndex. The loop reuses these indexes when it reads each record. This reduces repeated work and makes the processing easier to follow.</p>
+<pre style="background:#f6f7f8;color:#172c3e;border:0;border-radius:0;white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.7 Consolas,monospace;padding:16px;"><code>int idIndex = cursor.getColumnIndexOrThrow(&quot;id&quot;);
+int weightIndex = cursor.getColumnIndexOrThrow(&quot;weight&quot;);
+int dateIndex = cursor.getColumnIndexOrThrow(&quot;date&quot;);
+while (cursor.moveToNext()) {
+
+    int id = cursor.getInt(
+            idIndex
+    );
+
+    double weight = cursor.getDouble(</code></pre>
 <p>The Cursor still visits each of the n returned records once, so the traversal remains O(n). I did not run a benchmark or an automated algorithm test suite, so I do not claim a measured speed improvement.</p>
 </section>
 
