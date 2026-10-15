@@ -1,53 +1,51 @@
-# Enhancement Three — Databases
+# Enhancement Three: Databases – Jose Bustamante
 
-## Artifact and Rationale
+[Download the final Word document](documents/Enhancement%20Three%20Final%20Databases%20Jose%20Bustamante.docx)
 
-The artifact is DatabaseHelper. The [earlier helper](https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/capstone/baseline/DatabaseHelper_before_database_enhancement.java) did not fully enforce ownership relationships between users, weight records, and goals.
+## 1. Briefly describe the artifact. What is it? When was it created?
 
-## Evidence of Enhancement
+The artifact I chose is my Android Weight Tracker app. I created it in a previous course. Users can create an account, log in, enter their weight, set a goal weight, and track their progress.
 
-The [revised helper](https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/app/src/main/java/com/example/weighttrackerapp_josebustamante/DatabaseHelper.java) enables foreign keys, requires important fields with NOT NULL, connects weights and goals to users through user_id, and limits each user to one goal.
+The app uses SQLite to store data locally. Before this enhancement, it stored users, weight records, and goals, but the weight and goal records were not fully connected to each user.
 
-Update and delete operations include both entry ID and user ID. Parameterized selections keep user values separate from SQL syntax.
+For this enhancement, I changed how the app stores and loads data so each user has their own weight history and goal.
 
-The published enhanced artifact also contains a version 4 migration. It preserves complete legacy tables in *_legacy_v4 tables and copies records with known valid owners into the active schema. Records without clear ownership remain archived instead of being assigned to another user.
+## 2. Why did you select this artifact? What skills does it showcase? How was it improved?
 
-## Validation Evidence
+I chose this app because it gave me a chance to show my database design and data management skills. It already used SQLite, but its database needed changes to handle multiple users correctly. Weight records and goals could be treated as shared data, even though each user should only see their own information.
 
-The user-owned database design was manually tested in the Android Emulator during the enhancement work. Two different user accounts were used. User A created weight and goal data. After logging in as User B, User A's information was not visible. Returning to User A showed that the original data was still available.
+I added a user_id field to the weight and goal tables. I also added foreign keys to connect those tables to the user’s table. These database relationships link each weight record and goal to a specific user. This helps keep the data consistent and makes it easier to manage. The relationships are Users to Weights and Users to Goals.
 
-The later version 4 migration was also validated separately on October 5, 2026. The published DatabaseHelper was compiled without editing its migration logic in an isolated Android test copy. The validation used a Pixel 7 emulator running Android 14/API 34.
+I changed the database methods to use the logged-in user's ID. The app now loads only that user's weight records. When a record is updated or deleted, it checks both the weight ID and the user ID. Each user can also have their own goal weight.
 
-Three Android instrumentation tests passed:
+After a successful login, the app gets the user's database ID and passes it to the weight and goal screens. This lets those screens use the correct user's data.
 
-- An exact version 3 schema preserved two users, four weight records, and two user goals while archiving the original tables.
-- A legacy ownership scenario kept valid user-owned records active while leaving ownerless and orphaned records only in the legacy archive.
-- A global legacy schema without user ownership kept global weight and goal data in the legacy archive instead of assigning it to a user.
+I kept the SMS goal notification feature. When a user enters a weight that meets or falls below their goal, the app can send a congratulatory SMS if the user has entered a phone number and granted SMS permission.
 
-The tests also confirmed:
+These changes show my skills in SQLite, relational database concepts, foreign keys, CRUD operations, database queries, data validation, and Android app development.
 
-- database reopening at version 4
-- foreign-key enforcement enabled
-- foreign_key_check returned no violations
-- integrity_check returned ok
-- add, edit, and delete operations worked independently for both users
-- attempts to edit or delete another user's record returned false
-- separate goals persisted for both users
-- inserts for a nonexistent user were rejected by the foreign-key constraint
-- no application crash occurred during migration, login, list display, add, edit, delete, or goal operations
+## 3. Did you meet the course outcomes you planned to meet with this enhancement?
 
-The original local project folder remains at DATABASE_VERSION 3. The version 4 validation was performed against the published enhanced artifact in an isolated copy so the original folder was not modified.
+Yes, I met the course outcomes I planned to support with this enhancement. I used computing tools and techniques to improve the app so it can handle multiple users more reliably. This supports Course Outcome 4 through Java and SQLite integration, Course Outcome 3 through relational design and tested CRUD behavior, and Course Outcome 5 through user data isolation and validation checks.
 
-## Reflection
+I also worked on designing and testing software solutions. I reviewed the original database, found problems in its structure, and improved the relationships between users, weights, and goals.
 
-This enhancement taught me that database work is not only about inserting and reading records. Ownership, relationships, integrity, migration behavior, and privacy all affect the quality of a database design.
+I made progress on the security outcome through data isolation. Using user IDs in database queries helps prevent a user from accidentally viewing, changing, or deleting another user's information. Passwords are still stored in plaintext. Data isolation helps protect each user’s records, but it does not provide secure password storage.
 
-The application still stores passwords in plaintext, so secure password hashing remains an important future improvement before production use.
+The changes also improved the software design. The database methods now have clearer jobs, and the tables are better connected. I do not need major changes to my original outcome-coverage plan. This enhancement helped me show my database skills while also improving the software design and security of the app.
 
-[Artifact overview and validation](https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/CAPSTONE.md)
+## 4. Reflect on the process of enhancing and modifying the artifact. What did you learn? What challenges did you face?
 
-## Course Outcome Alignment
+This enhancement helped me understand why database design matters. I learned that storing records is only part of the work. The database also needs clear relationships so the app knows which records belong to each user.
 
-This enhancement supports Outcome 4 through relational database and migration techniques, Outcome 5 through ownership checks, foreign-key enforcement, and data separation, and Outcome 3 through consideration of migration and retention trade-offs.
+Adding user_id helped me understand foreign keys and data isolation. I also learned that database change can affect several parts of an app, including login, adding records, editing records, deleting records, and displaying data.
 
-[Course outcomes across the portfolio](course-outcomes.md) · [Original and enhanced artifact](artifact.md)
+One challenge was that the emulator still had an older version of the database. The app initially crashed because that database did not have the new user_id column. I fixed this by updating the database version and recreating the database with the new structure. The local original enhanced project and the Enhanced_Code folder in the submitted database milestone ZIP still use DATABASE_VERSION 3; its Original_Code folder uses version 2. For the final validation of the published artifact, I used an isolated copy to check the migration from version 3 to version 4. That check was separate from the earlier database recreation.
+
+Another challenge was passing the same user ID between the login screen, weight list, add weight screen, and goal screen. Some Intent value names did not match. I fixed the problem by making those names consistent.
+
+I also had Java compilation errors after editing files through PowerShell. I learned that invisible characters, such as a UTF-8 BOM, can cause these errors and how to remove them.
+
+To test the changes, I created two users. The first user added weight records and a goal. I logged out and signed in as the second user, and the first user's information was not visible. When I signed back into the first account, the original data was still there. This test confirmed that the database kept the two users' information separate. I also completed final validation of the published artifact in an isolated copy on a Pixel 7 emulator with Android 14 (API 34). All three instrumentation tests passed, including the version 3 to 4 migration check. Foreign keys were enabled, foreign_key_check returned no violations, and integrity_check returned ok. I checked independent create, read, update, and delete operations for two users. Attempts to update or delete another user’s record returned false. The two users kept separate goals, and an insert with an invalid user ID was rejected. There were no crashes during these checks.
+
+Through this work, I learned more about SQLite, foreign keys, database relationships, CRUD operations, data isolation, debugging, and testing. I also saw how better database design can make an app more reliable and help protect user data.

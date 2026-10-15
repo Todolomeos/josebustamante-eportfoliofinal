@@ -1,107 +1,48 @@
 # Professional Self-Assessment
 
-## Introduction
+[Download the final Word document](documents/Professional%20Self%20Assessment%20Jose%20Bustamante.docx)
 
-As I prepare my final CS-499 Computer Science Capstone ePortfolio at Southern New Hampshire University, this professional self-assessment brings together what I have learned throughout the Computer Science program and the growth demonstrated in my Weight Tracker project.
+Jose Bustamante
+CS 499 Computer Science Capstone
 
-My professional interests include cybersecurity, data analysis, and software development. During the program, I learned that these areas are connected. Software needs to be organized and reliable, data needs to be stored and processed correctly, and security needs to be considered throughout the development process.
+## My Growth and Career Goals
 
-My ePortfolio uses the Android Weight Tracker application as the main artifact across software design and engineering, algorithms and data structures, and databases. Using the same application for all three categories helped me understand how changes in one part of a system can affect the rest of the application.
+When I started the Computer Science program, I wanted to become a general software developer. Over time, my interests moved toward cybersecurity and data analysis. I enjoy understanding how systems work, finding problems, protecting information, and using data to make better decisions. The program helped me build a foundation in software design, algorithms, databases, and security. My ePortfolio shows how I used these skills to improve work I had already created.
 
-## Professional Skills and Growth
+My main capstone artifact is the Android Weight Tracker app from CS 360. I used the same app for software design and engineering, algorithms and data structures, and databases. Reviewing the original code helped me see where it needed clearer responsibilities, better data handling, and stronger user data separation. I also learned to explain what I changed and what still needs work.
 
-One of the most important things I learned during the program is that software development is not only about making a program work. Good software should also be organized, maintainable, secure, and understandable to other developers and users.
+## Collaboration and Decision Making
 
-Communication has been an important part of my growth. During the program, I completed technical writing, project documentation, presentations, and a code review video. The code review helped me practice explaining how an application works, identifying weaknesses, and describing planned improvements for another developer, instructor, or stakeholder.
+Course Outcome 1 is about building collaborative environments where people with different needs can help make decisions. In CS 340, I built the Grazioso Salvare dashboard using a Python CRUD module, MongoDB, and Dash. Its rescue filters, table, chart, and map helped me connect a stakeholder’s needs to a useful solution. I learned that a useful application starts with understanding what people need to do with their data. Clear questions, shared requirements, and readable documentation help technical and nontechnical people work toward the same goal.
 
-Collaboration is also important in computer science. Even when a project is completed individually, the code and documentation should be clear enough for another person to review and continue. Clear naming, organization, documentation, and separation of responsibilities support that goal. I also used instructor feedback during the capstone to make my technical explanations more specific and to add clearer evidence for testing, complexity, database design, and security.
+In CS 499, I used instructor feedback to improve my work and explain my decisions more clearly. This was an individual project. It helped me practice listening to feedback and making changes that another person could review. My documentation and dashboard choices support shared understanding, although the capstone does not demonstrate work on a development team with diverse members.
 
-## Examples From the Computer Science Program
+## Professional Communication
 
-My work in other courses also helped me build skills that support the capstone.
+Course Outcome 2 is about clear oral, written, and visual communication. My code review, enhancement narratives, and ePortfolio helped me explain technical work for different audiences. I learned to describe the original problem, explain a change, and connect it to a result. A reader should be able to understand why the work matters without knowing every line of code.
 
-In CS 305 Software Security, I worked on a project for Artemis Financial. I added HTTPS, AES-256 encryption, SHA-256 hashing, certificates, and OWASP Dependency-Check. I also had to troubleshoot the dependency scanner and review the application again after making security changes. This experience helped me understand that security needs to be part of development from the beginning, not something added only at the end.
+My journals also helped me think about how to present my work responsibly. I want employers to see real examples of my skills, while keeping private information, passwords, and API keys out of public files. I learned that clear communication includes being honest about limitations and keeping old plans separate from completed work.
 
-In CS 300 Data Structures and Algorithms, I compared vectors, hash tables, and binary search trees while working with course data. I learned that each structure has different strengths and weaknesses for searching, ordering, and performance. That experience helped me think more carefully about trade-offs instead of choosing a solution only because it works.
+## Algorithms and Computing Solutions
 
-In CS 340 Client-Server Development, I built a dashboard for Grazioso Salvare using MongoDB, Python, Pandas, Dash, a data table, a chart, and a map. The project required me to connect database queries to user needs and present the results in a way that helped the client make decisions. This strengthened my understanding of database design, data processing, and communication with stakeholders.
+Course Outcome 3 is about using algorithmic principles to solve problems and understanding design trade-offs. CS 300 helped me compare data structures and algorithms and consider how a choice affects the work a program must do. That knowledge helped me review the weight-loading loop in my capstone app.
 
-These projects are not additional capstone artifacts. They are examples from the Computer Science program that show how my experience in security, algorithms, databases, testing, and client-focused software development supports the work presented in this ePortfolio.
+The Cursor traversal visits each returned record once, so it is O(n). In the final validated version, moving column lookups outside the loop reduces repeated work while keeping the same O(n) traversal. The earlier milestone ZIP still has these lookups inside the loop. I also made the data flow easier to follow when adding, editing, deleting, and refreshing records. I checked these actions manually. I did not run a benchmark or build an automated algorithm test suite, so I do not claim a measured performance gain. Sorting and statistics were early plans, not completed features I am presenting here.
 
-## Software Engineering
+## Tools and Practical Development
 
-My Software Design and Engineering enhancement focused on improving the structure of the Weight Tracker application.
+Course Outcome 4 is about using computing techniques, skills, and tools to build useful solutions. I used Java, Android Activities, helper classes, layouts, and SQLite to improve the Weight Tracker app. AuthManager handles database calls for login and account creation, ErrorHandler checks empty login fields and shows errors, and UIHelper handles the loading indicator. The Activities still manage their screens and navigation. This separation made the code easier for me to understand and maintain.
 
-The original application placed several responsibilities directly inside the Activities. I improved the organization by using helper classes such as AuthManager, ErrorHandler, and UIHelper. AuthManager handles authentication-related logic, while Activities focus more on navigation and user interaction. ErrorHandler and UIHelper support reusable validation, error handling, and interface behavior.
+For the database enhancement, I connected weight records and goals to users and used the user ID when reading or changing data. Final validation of the published artifact used an isolated copy on a Pixel 7 emulator with Android 14, API 34. Three instrumentation tests passed, including the migration from database version 3 to 4. Foreign keys were enabled, foreign_key_check found no violations, and integrity_check returned ok. Checks also confirmed independent CRUD operations and goals for two users, rejection of an invalid user insert, and false results for cross-user updates and deletes. There were no crashes during these checks. The local original enhanced project remains at DATABASE_VERSION 3.
 
-The core application flow was manually tested in the Android Emulator after the enhancement work. Testing included account creation, login, navigation, adding weight records, editing records, deleting records, setting goals, and returning to the list to confirm that the application continued working after the changes.
+## Security Mindset
 
-## Algorithms and Data Structures
+Course Outcome 5 is about anticipating vulnerabilities, reducing design flaws, and protecting data. CS 305 helped me understand the value of reviewing software for security problems and explaining how those problems should be addressed. It also helped me see security as part of design and testing, rather than a final step.
 
-The Algorithms and Data Structures enhancement focused on how the application processes and displays weight records.
+In the capstone app, using the user ID in queries and checking both the record ID and user ID for updates and deletes helped keep users’ data separate. Foreign keys also helped reject records that did not belong to a valid user. These are useful improvements, but passwords still remain in plaintext. Input validation is not the same as secure authentication, and password hashing was not implemented. Recognizing this limitation is part of my security mindset.
 
-The application retrieves records from SQLite using a Cursor and processes them one at a time. If there are n records, displaying the complete list requires one traversal, so the processing is O(n).
+## Next Steps
 
-The revised logic resolves column indices before the loop, closes the Cursor in a finally block, and uses onResume to refresh the list without the earlier duplicate initial load. Add, edit, delete, and refresh behavior was manually tested in the Android Emulator.
+Previous courses are examples of my learning across the program. They provide context for my skills and goals; they are not additional capstone artifacts. My capstone work shows how software design, algorithms, databases, communication, and security connect in one application.
 
-For this algorithm enhancement, no formal performance benchmark or automated algorithm-performance suite was run. Because of that, I do not claim a measured speed improvement. The improvement is in clearer processing, less repeated work, better lifecycle handling, and user-connected data operations. The later instrumentation tests described in the database enhancement were focused on migration and user-scoped database behavior, not algorithm performance.
-
-## Databases
-
-The Database enhancement improved the SQLite structure and the way the application separates user information.
-
-Weights and goals are connected to users with user_id relationships and foreign keys. Database operations use the logged-in user's ID when retrieving, updating, and deleting information.
-
-I tested user data separation with two different accounts. User A created weight records and a goal. After logging out and signing in as User B, User A's information was not visible. When I returned to User A, the original information was still available.
-
-The published enhanced artifact also includes a later version 4 migration that preserves legacy tables and copies records with known owners into the active schema. On October 5, 2026, that migration was compiled and validated separately in an isolated Android test copy on Android 14/API 34.
-
-Three instrumentation tests passed. They confirmed successful migration to version 4, foreign-key enforcement, database integrity, user-scoped add/edit/delete operations, independent goals for two users, rejection of invalid user IDs, and safe archiving of records that could not be connected to a valid owner. No application crash was observed during the tested migration and account/CRUD flows.
-
-The original local project folder remains on DATABASE_VERSION 3. The version 4 validation was performed against the published enhanced artifact without modifying the original folder.
-
-## Security
-
-Security has become more important to me throughout the Computer Science program.
-
-In the Weight Tracker application, user-specific database operations, foreign keys, input validation, and permission handling helped improve data protection and integrity. The two-user test also provided evidence that one account could not see another account's stored weight and goal information.
-
-The version 4 migration testing also showed that records with unknown or invalid ownership are not assigned to another user. Invalid user IDs were rejected by foreign-key constraints.
-
-I also learned that recognizing a weakness is part of having a security mindset. The application still stores passwords in plaintext. I do not consider that secure authentication, and password hashing would be an important improvement before a professional release.
-
-## Course Outcome Reflection
-
-### Outcome 1 — Collaborative Environments and Decision Making
-
-The code review, documentation, technical narratives, and use of instructor feedback helped me practice presenting technical decisions so other people can review them. I learned that collaboration requires understandable code and clear explanations of trade-offs, limitations, and test results. I do not claim that this artifact was a completed team-development project, but the way the work is documented supports collaborative review.
-
-### Outcome 2 — Professional Communication
-
-The two-part code review, written narratives, ePortfolio pages, and this professional self-assessment demonstrate oral and written communication. I worked to explain technical ideas in a way that is accurate but still understandable to different audiences.
-
-### Outcome 3 — Algorithmic Solutions and Trade-offs
-
-The Algorithms and Data Structures enhancement demonstrates this outcome through the O(n) Cursor traversal, reduction of repeated work inside the loop, lifecycle-based refresh behavior, and evaluation of design trade-offs. I also separated measured facts from assumptions by not claiming a performance improvement without a benchmark.
-
-### Outcome 4 — Computing Techniques, Skills, and Tools
-
-The Weight Tracker demonstrates the use of Java, Android development, SQLite, database relationships, validation, Activity lifecycle handling, helper classes, CRUD operations, and Android instrumentation testing. These tools were used together to improve organization, data ownership, migration behavior, and reliability.
-
-### Outcome 5 — Security Mindset
-
-The database enhancement demonstrates user ownership, data isolation, foreign-key relationships, user-scoped updates and deletes, input validation, and safe handling of records with unknown ownership. The project also identifies plaintext password storage as a remaining vulnerability instead of presenting the application as fully secure.
-
-## How the Portfolio Fits Together
-
-The code review, original code, enhanced code, and three enhancement narratives show the process of identifying weaknesses and improving the Weight Tracker application.
-
-The Software Design and Engineering enhancement demonstrates better organization and maintainability. The Algorithms and Data Structures enhancement demonstrates how the application processes and manages weight records. The Database enhancement demonstrates improved relationships, ownership, migration behavior, and separation of user data.
-
-Together, these enhancements show my growth in software engineering, algorithms, databases, testing, security, communication, and problem-solving.
-
-## Portfolio Summary
-
-The three required enhancement categories are represented in this ePortfolio, and the technical work is supported by manual Android Emulator testing and dedicated database migration instrumentation testing.
-
-This portfolio presents the original and enhanced artifact, the code review, the three enhancement narratives, the course outcome evidence, and this professional self-assessment as one complete view of my growth throughout the Computer Science program.
+I want to keep building my cybersecurity and data analysis skills after graduation. I am considering certifications such as Security+ and further training in data analysis. I also want to improve my testing skills and learn more about secure password storage. This program helped me become more careful about how I build, review, and explain software. I can now look at an existing project, find weaknesses, make useful changes, and describe the results in a clear way.

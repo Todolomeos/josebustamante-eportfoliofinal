@@ -1,39 +1,63 @@
-# Enhancement Two — Algorithms and Data Structures
+# Enhancement Two (Algorithms & Data Structures) Jose Bustamante
 
-## Artifact and Rationale
+[Download the final Word document](documents/Enhancement%20Two%20Final%20Jose%20Bustamante.docx)
 
-The artifact is WeightListActivity, which reads a SQLite Cursor and creates a table row for each returned weight record. The preserved [original activity](https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/capstone/baseline/WeightListActivity_ORIGINAL.java) queried all weights and contained inline editing logic.
+## 1. Briefly describe the artifact. What is it? When was it created?
 
-## Evidence of Enhancement
+The artifact I selected is the WeightListActivity component from my Android Weight Tracker application. I originally created this artifact in a previous course when I was learning how to manage data, display dynamic content, and build interactive mobile interfaces. The artifact loads weight entries from a database and displays them in a dynamic table, allowing users to add, edit, and delete entries. It was originally functional but lacked strong algorithmic structure, efficient data handling, and clear organization.
 
-The [revised activity](https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/app/src/main/java/com/example/weighttrackerapp_josebustamante/WeightListActivity.java) requests only the current user's records, resolves the required column indices before traversal, and closes the Cursor in a finally block.
+## 2. Justify the inclusion of the artifact in your ePortfolio. Why did you select this item? What skills do it showcase? How was it improved?
 
-Editing moves to AddWeightActivity with the entry ID, user ID, weight, and date. Initial rendering occurs through onResume, avoiding the former duplicate load between onCreate and onResume.
+I selected this artifact because it clearly demonstrates my skills in algorithms and data structures, which is the focus of this enhancement. The artifact uses several algorithmic concepts such as:
 
-## Algorithm and Complexity
+- Iterating through database results using a cursor
 
-The list processes each returned weight record once. If there are n records, rendering the complete list requires one traversal, so the processing is O(n).
+- Dynamically constructing UI elements using loops
 
-Moving column lookups outside the loop reduces repeated work but does not change the O(n) complexity. Filtering by user reduces which records are returned to the application, but no database performance benchmark was performed. For that reason, this portfolio does not claim a measured speed improvement.
+- Managing structured data through lists and table rows
 
-Insert, update, and delete operations are handled through database methods. Update and delete operations use both the weight ID and user ID so the intended user's record is changed.
+- Implementing conditional logic for editing vs. inserting data
 
-## Testing Evidence
+- Using structured data storage through a relational database
 
-The WeightListActivity flow was manually tested in the Android Emulator during the enhancement work. I added multiple weight records and confirmed that they appeared in the list. I edited an existing record and confirmed that the updated information appeared after returning to the list. I deleted a record and confirmed that it was removed. Repeated add and edit actions also confirmed that onResume refreshed the displayed records.
+For this enhancement, I improved the artifact in several ways:
 
-For this Algorithms and Data Structures enhancement specifically, no automated algorithm test suite or formal performance benchmark was run, so no automated pass/fail count or measured performance gain is claimed. The three instrumentation tests described in Enhancement Three were later created for database migration and user-scoped database validation; they are separate from the algorithm-performance evidence presented here.
+- Refactored the weight loading algorithm to make it clearer and more maintainable while reducing repeated work. The Cursor visits each of the n returned weight records once, so this traversal is O(n). In the final validated version, I moved the column lookups outside the loop so the app can reuse the column indexes for each record. The earlier milestone ZIP still performs these lookups inside the loop. This reduces repeated work but does not change the O(n) traversal. This describes the loop, not the total cost of the database query or drawing the screen. The app reads the current user’s records through DatabaseHelper, loops through the Cursor to display rows, and chooses to insert or update based on the editing state. Update and delete operations use the record ID and user ID; I did not measure their database query costs.
 
-## Reflection
+- Improved data structure usage by organizing table rows and UI components more systematically.
 
-This enhancement helped me understand that algorithmic improvement is not only about changing Big-O notation. Data selection, repeated work inside a loop, Cursor lifetime, Activity lifecycle, and record ownership also affect how clearly and reliably an application processes data.
+- Added better validation logic, improving reliability and reducing errors.
 
-Database access still runs on the UI thread and the table creates every visible row. Background queries and pagination would be reasonable future improvements for a larger dataset.
+- Enhanced modularity by separating responsibilities across activities and helper classes.
 
-[Artifact overview and validation](https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/CAPSTONE.md)
+- Improved update and insert algorithms to handle user IDs, editing states, and dynamic refreshes.
 
-## Course Outcome Alignment
+These improvements show my ability to analyze existing code, identify weaknesses, and apply algorithmic principles to make the solution clearer and more maintainable while reducing repeated work.
 
-This enhancement supports Outcome 3 by evaluating traversal cost and design trade-offs, Outcome 4 through Cursor and lifecycle handling, and Outcome 2 through a clear technical explanation of what changed and what was not measured.
+## 3. Did you meet the course outcomes you planned to meet with this enhancement? Any updates?
 
-[Course outcomes across the portfolio](course-outcomes.md) · [Original and enhanced artifact](artifact.md)
+Yes, I met the outcomes I planned in Module One. Specifically:
+
+- I demonstrated the ability to design and evaluate computing solutions using algorithmic principles, which is a core program outcome.
+
+- I improved the artifact using data structures and algorithmic reasoning, showing progress toward competency in the algorithms and data structures category.
+
+- I applied software engineering practices by refactoring code, improving readability, and enhancing maintainability.
+
+My final work focused on the Cursor loop, clearer data handling, and update logic. Sorting and statistics were part of my early plan, but I am not claiming them as completed enhancements. This work supports my planned outcomes through algorithmic reasoning and maintainability.
+
+## 4. Reflect on the process of enhancing and modifying the artifact. What did you learn? What challenges did you face?
+
+Enhancing this artifact taught me how important it is to write code that is both efficient and easy to understand. I learned how small algorithmic improvements such as reorganizing loops, improving conditional logic, and structuring data flow can reduce repeated work and make the code easier to follow. I did not run a benchmark, so I cannot claim a measured speed increase.
+
+Challenges I faced included:
+
+- Debugging broken package structures after reorganizing the project.
+
+- Fixing mismatched IDs and layout inconsistencies between XML and Java.
+
+- Ensuring correct data flow between activities, especially when editing existing entries.
+
+- Maintaining clean separation of concerns, especially when adding helper classes like AuthManager and UIHelper.
+
+Despite these challenges, the enhancement strengthened my understanding of algorithmic design, data handling, and structured programming. It also helped me improve my debugging skills and reinforced the importance of clean, maintainable code. I manually checked adding an entry and seeing it in the list, editing an entry and seeing the new value, deleting an entry and checking that it was gone, and refreshing the list after these changes. I did not create an automated algorithm test suite. The three instrumentation tests are database checks for Enhancement Three, not tests of this algorithm.

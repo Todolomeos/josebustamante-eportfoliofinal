@@ -41,3 +41,10 @@ No application crash was observed during migration, login, list display, add, ed
 The original local project folder remains on DATABASE_VERSION 3. The version 4 migration belongs to the published enhanced artifact and was validated separately without modifying that original folder.
 
 Password storage remains a known security limitation and is not represented as secure hashing.
+
+## Final Word Documents
+
+- [Professional Self Assessment Jose Bustamante](documents/Professional%20Self%20Assessment%20Jose%20Bustamante.docx)
+- [Enhancement One Final Software Design Engineering](documents/Enhancement%20One%20Final%20Software%20Design%20Engineering.docx)
+- [Enhancement Two Final Jose Bustamante](documents/Enhancement%20Two%20Final%20Jose%20Bustamante.docx)
+- [Enhancement Three Final Databases Jose Bustamante](documents/Enhancement%20Three%20Final%20Databases%20Jose%20Bustamante.docx)

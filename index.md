@@ -24,3 +24,10 @@ The three required enhancement categories are represented in this portfolio. Cor
 The published enhanced artifact also includes a later SQLite database migration from version 3 to version 4. On October 5, 2026, that published version 4 DatabaseHelper was compiled and validated in an isolated Android test copy using a Pixel 7 emulator running Android 14/API 34. Three instrumentation tests passed. The validation confirmed migration behavior, foreign-key enforcement, database integrity, user-scoped CRUD operations, independent goals, and preserved separation between two users. No application crash was observed during migration or the tested account and CRUD flows.
 
 The original local project folder remains on DATABASE_VERSION 3. The version 4 migration is part of the published enhanced artifact and was validated separately without modifying the original local folder.
+
+## Final Word Documents
+
+- [Professional Self Assessment Jose Bustamante](documents/Professional%20Self%20Assessment%20Jose%20Bustamante.docx)
+- [Enhancement One Final Software Design Engineering](documents/Enhancement%20One%20Final%20Software%20Design%20Engineering.docx)
+- [Enhancement Two Final Jose Bustamante](documents/Enhancement%20Two%20Final%20Jose%20Bustamante.docx)
+- [Enhancement Three Final Databases Jose Bustamante](documents/Enhancement%20Three%20Final%20Databases%20Jose%20Bustamante.docx)
