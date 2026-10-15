@@ -5,15 +5,20 @@
 <p>Originally created in CS 360, Weight Tracker supports account creation, login, weight history, goals, and optional SMS notifications.</p>
 <section aria-labelledby="comparison-title">
 <h2 id="comparison-title">From the original app to the enhanced artifact</h2>
-<div class="comparison-grid">
-<article class="comparison-card before"><span class="stage">Before</span><h3>Original implementation</h3><ul><li>More application logic inside Activities</li><li>Column lookups repeated during record traversal</li><li>Weight records and goals not fully scoped to users</li><li>Earlier upgrades could discard stored data</li></ul><a class="text-link" href="https://github.com/Todolomeos/josebustamante-eportfoliofinal/tree/main/artifacts/weight-tracker-original">View original source ↗</a></article>
-<article class="comparison-card after"><span class="stage">After</span><h3>Enhanced implementation</h3><ul><li>Separate authentication, validation, and UI helpers</li><li>Column indexes resolved before the O(n) traversal</li><li>User-scoped records, goals, updates, and deletes</li><li>Version 4 migration preserves legacy data</li></ul><a class="text-link" href="https://github.com/Todolomeos/josebustamante-eportfoliofinal/tree/main/artifacts/weight-tracker/app/src/main/java/com/example/weighttrackerapp_josebustamante">View enhanced source ↗</a></article>
-</div></section>
-<section aria-labelledby="enhancements-title"><h2 id="enhancements-title">Three enhancements, one connected artifact</h2><div class="enhancement-grid">
-<article class="enhancement-card"><span class="number">01</span><h3>Software Design &amp; Engineering</h3><p>AuthManager, ErrorHandler, and UIHelper separate responsibilities. Activities manage their screens and navigation.</p><p class="skill">Separation of concerns · Maintainability</p></article>
-<article class="enhancement-card"><span class="number">02</span><h3>Algorithms &amp; Data Structures</h3><p>A single Cursor traversal displays the records. Reused column indexes reduce repeated work without changing O(n).</p><p class="skill">Algorithmic reasoning · Data flow</p></article>
-<article class="enhancement-card"><span class="number">03</span><h3>Databases</h3><p>User relationships and foreign keys connect records to their owners. Queries check ownership when loading and changing data.</p><p class="skill">Relational design · Data isolation</p></article>
-</div></section>
+<h3>Original implementation</h3>
+<p>In the original application, more logic remained inside the Activities. The weight-loading loop repeated column lookups for each record, and weight records and goals were not fully connected to individual users. Earlier database upgrades could also discard stored data.</p>
+<p><a href="https://github.com/Todolomeos/josebustamante-eportfoliofinal/tree/main/artifacts/weight-tracker-original">View original source</a></p>
+<h3>Enhanced implementation</h3>
+<p>I separated authentication, validation, and interface support into helper classes. In the final published version, column indexes are resolved before the O(n) traversal. Weight records and goals belong to individual users, and update and delete operations check ownership. The version 4 migration preserves legacy data.</p>
+<p><a href="https://github.com/Todolomeos/josebustamante-eportfoliofinal/tree/main/artifacts/weight-tracker/app/src/main/java/com/example/weighttrackerapp_josebustamante">View enhanced source</a></p>
+</section>
+<section aria-labelledby="enhancements-title"><h2 id="enhancements-title">Three enhancements, one connected artifact</h2><h3>Software Design and Engineering</h3>
+<p>I used AuthManager, ErrorHandler, and UIHelper to separate responsibilities. The Activities manage their screens and navigation. This helped me understand separation of concerns and made the code easier to maintain.</p>
+<h3>Algorithms and Data Structures</h3>
+<p>The application reads the records in one Cursor traversal. In the final published version, column indexes are reused during the loop to reduce repeated work. The traversal remains O(n). This work helped me explain the processing steps and follow the data flow more clearly.</p>
+<h3>Databases</h3>
+<p>I connected weight records and goals to their users through user relationships and foreign keys. Database queries check ownership when loading or changing information. These changes helped me apply relational database design and keep each user's data separate.</p>
+</section>
 <section aria-labelledby="code-title"><h2 id="code-title">Before and After</h2><p>I changed the weight-loading loop so it looks up the column indexes once before reading the records. The examples below show the original code and the final published version.</p><div class="comparison-grid code-comparison"><figure><figcaption>Before: column lookup inside the loop</figcaption><pre><code>do {
     int id = cursor.getInt(
             cursor.getColumnIndexOrThrow(
