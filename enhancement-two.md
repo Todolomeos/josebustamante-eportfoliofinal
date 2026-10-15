@@ -1,7 +1,5 @@
 # Enhancement Two (Algorithms & Data Structures) Jose Bustamante
 
-[Download the final Word document](documents/Enhancement%20Two%20Final%20Jose%20Bustamante.docx)
-
 ## 1. Briefly describe the artifact. What is it? When was it created?
 
 The artifact I selected is the WeightListActivity component from my Android Weight Tracker application. I originally created this artifact in a previous course when I was learning how to manage data, display dynamic content, and build interactive mobile interfaces. The artifact loads weight entries from a database and displays them in a dynamic table, allowing users to add, edit, and delete entries. It was originally functional but lacked strong algorithmic structure, efficient data handling, and clear organization.
@@ -61,3 +59,7 @@ Challenges I faced included:
 - Maintaining clean separation of concerns, especially when adding helper classes like AuthManager and UIHelper.
 
 Despite these challenges, the enhancement strengthened my understanding of algorithmic design, data handling, and structured programming. It also helped me improve my debugging skills and reinforced the importance of clean, maintainable code. I manually checked adding an entry and seeing it in the list, editing an entry and seeing the new value, deleting an entry and checking that it was gone, and refreshing the list after these changes. I did not create an automated algorithm test suite. The three instrumentation tests are database checks for Enhancement Three, not tests of this algorithm.
+
+## Word Copy
+
+[Download the final Word document](documents/Enhancement%20Two%20Final%20Jose%20Bustamante.docx)

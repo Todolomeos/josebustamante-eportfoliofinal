@@ -1,7 +1,5 @@
 # Enhancement Three: Databases – Jose Bustamante
 
-[Download the final Word document](documents/Enhancement%20Three%20Final%20Databases%20Jose%20Bustamante.docx)
-
 ## 1. Briefly describe the artifact. What is it? When was it created?
 
 The artifact I chose is my Android Weight Tracker app. I created it in a previous course. Users can create an account, log in, enter their weight, set a goal weight, and track their progress.
@@ -49,3 +47,7 @@ I also had Java compilation errors after editing files through PowerShell. I lea
 To test the changes, I created two users. The first user added weight records and a goal. I logged out and signed in as the second user, and the first user's information was not visible. When I signed back into the first account, the original data was still there. This test confirmed that the database kept the two users' information separate. I also completed final validation of the published artifact in an isolated copy on a Pixel 7 emulator with Android 14 (API 34). All three instrumentation tests passed, including the version 3 to 4 migration check. Foreign keys were enabled, foreign_key_check returned no violations, and integrity_check returned ok. I checked independent create, read, update, and delete operations for two users. Attempts to update or delete another user’s record returned false. The two users kept separate goals, and an insert with an invalid user ID was rejected. There were no crashes during these checks.
 
 Through this work, I learned more about SQLite, foreign keys, database relationships, CRUD operations, data isolation, debugging, and testing. I also saw how better database design can make an app more reliable and help protect user data.
+
+## Word Copy
+
+[Download the final Word document](documents/Enhancement%20Three%20Final%20Databases%20Jose%20Bustamante.docx)

@@ -19,6 +19,14 @@ The archived original files preserve the application before the CS-499 enhanceme
 
 The enhanced project includes the application resources, Java source, Gradle files, and preserved comparison files.
 
+## Read the Enhancement Narratives
+
+These pages explain the changes, skills, learning, and course outcomes for the same Weight Tracker artifact. The complete narratives are readable here without downloading a document.
+
+- [Software Design and Engineering narrative](enhancement-one.md)
+- [Algorithms and Data Structures narrative](enhancement-two.md)
+- [Databases narrative](enhancement-three.md)
+
 ## What Changed
 
 | Area | Earlier implementation | Enhanced implementation |

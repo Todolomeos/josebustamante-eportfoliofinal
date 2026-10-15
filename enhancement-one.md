@@ -1,7 +1,5 @@
 # Enhancement One Software Design/Engineering
 
-[Download the final Word document](documents/Enhancement%20One%20Final%20Software%20Design%20Engineering.docx)
-
 Narrative
 
 ## Briefly describe the artifact. What is it? When was it created?
@@ -109,3 +107,7 @@ Making sure the new architecture was consistent
 Ensuring the enhancements matched the capstone requirements
 
 This enhancement helped me grow as a software engineer. It showed me how to take an existing project and make it more professional, more organized, and more aligned with industry standards. I checked account creation, duplicate usernames, empty fields, valid and invalid login, and navigation to the weight and goal screens. I also checked adding, editing, and deleting weight entries, setting goals, and refreshing the list after changes. These manual checks helped me confirm that the refactor kept the main app flow working.
+
+## Word Copy
+
+[Download the final Word document](documents/Enhancement%20One%20Final%20Software%20Design%20Engineering.docx)

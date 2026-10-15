@@ -1,7 +1,5 @@
 # Professional Self-Assessment
 
-[Download the final Word document](documents/Professional%20Self%20Assessment%20Jose%20Bustamante.docx)
-
 Jose Bustamante
 CS 499 Computer Science Capstone
 
@@ -46,3 +44,7 @@ In the capstone app, using the user ID in queries and checking both the record I
 Previous courses are examples of my learning across the program. They provide context for my skills and goals; they are not additional capstone artifacts. My capstone work shows how software design, algorithms, databases, communication, and security connect in one application.
 
 I want to keep building my cybersecurity and data analysis skills after graduation. I am considering certifications such as Security+ and further training in data analysis. I also want to improve my testing skills and learn more about secure password storage. This program helped me become more careful about how I build, review, and explain software. I can now look at an existing project, find weaknesses, make useful changes, and describe the results in a clear way.
+
+## Word Copy
+
+[Download the final Word document](documents/Professional%20Self%20Assessment%20Jose%20Bustamante.docx)
