@@ -19,21 +19,15 @@
 <h3>Databases</h3>
 <p>I connected weight records and goals to their users through user relationships and foreign keys. Database queries check ownership when loading or changing information. These changes helped me apply relational database design and keep each user's data separate.</p>
 </section>
-<section aria-labelledby="code-title"><h2 id="code-title">Before and After</h2><p>I changed the weight-loading loop so it looks up the column indexes once before reading the records. The examples below show the original code and the final published version.</p><div class="comparison-grid code-comparison"><figure><figcaption>Before: column lookup inside the loop</figcaption><pre><code>do {
-    int id = cursor.getInt(
-            cursor.getColumnIndexOrThrow(
-                    DatabaseHelper.COL_WEIGHT_ID
-            )
-    );
-</code></pre></figure><figure><figcaption>After: column indexes set before the loop</figcaption><pre><code>int idIndex = cursor.getColumnIndexOrThrow(&quot;id&quot;);
-int weightIndex = cursor.getColumnIndexOrThrow(&quot;weight&quot;);
-int dateIndex = cursor.getColumnIndexOrThrow(&quot;date&quot;);
-while (cursor.moveToNext()) {
+<section aria-labelledby="code-title">
+<h2 id="code-title">Before and After</h2>
+<h3>Before</h3>
+<p>In the original weight-loading loop, I used getColumnIndexOrThrow inside the loop to find the ID, weight, and date columns for each record. This meant the application repeated the same column lookups as it read the records.</p>
+<h3>After</h3>
+<p>In the final published version, I moved those column lookups before the loop and stored the indexes in idIndex, weightIndex, and dateIndex. The loop reuses these indexes when it reads each record. This reduces repeated work and makes the processing easier to follow.</p>
+<p>The Cursor still visits each of the n returned records once, so the traversal remains O(n). I did not run a benchmark or an automated algorithm test suite, so I do not claim a measured speed improvement.</p>
+</section>
 
-    int id = cursor.getInt(
-            idIndex
-    );
-</code></pre></figure></div><p>Traversal remains O(n). No benchmark or automated algorithm test suite was run, and no measured speed improvement is claimed.</p></section>
 <section aria-labelledby="validation-title"><h2 id="validation-title">Testing Results</h2><ul class="testing-results"><li>Three database instrumentation tests passed.</li><li>Two users kept separate weight records and goals.</li><li>The published database migration from version 3 to 4 was checked.</li><li>Testing used a Pixel 7 emulator with Android 14 (API 34).</li></ul><div class="validation-detail"><h3>Database checks</h3><ul><li>Foreign keys enabled; foreign_key_check returned no violations</li><li>integrity_check returned ok</li><li>Cross-user update and delete attempts returned false</li><li>Invalid user inserts were rejected</li><li>No crashes observed during the tested migration and account/CRUD flows</li></ul><h3>Manual application checks</h3><p>Account creation, duplicate usernames, empty fields, valid and invalid login, navigation, add/edit/delete weights, goals, refresh, and two-user data separation.</p><p>The published version 4 artifact was validated in an isolated Android copy. The original local enhanced project remains at DATABASE_VERSION 3. Passwords remain in plaintext; input validation and data isolation do not provide secure password storage.</p><a class="text-link" href="https://github.com/Todolomeos/josebustamante-eportfoliofinal/blob/main/artifacts/weight-tracker/CAPSTONE.md">Implementation and validation notes ↗</a></div></section>
 <section class="project-files" aria-labelledby="files-title"><h2 id="files-title">Project files</h2><div class="file-actions"><a class="action secondary" href="artifacts/WeightTracker-original.zip">Download Original Project</a><a class="action secondary" href="artifacts/WeightTracker-final.zip">Download Enhanced Project</a><a class="action secondary" href="code-review.html">Watch Code Review</a></div></section>
 </div>
